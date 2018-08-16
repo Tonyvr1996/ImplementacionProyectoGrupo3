@@ -16,6 +16,7 @@ public class VistaVendedor extends javax.swing.JFrame {
      */
     public VistaVendedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

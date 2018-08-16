@@ -16,6 +16,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
      */
     public VistaSuperadministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

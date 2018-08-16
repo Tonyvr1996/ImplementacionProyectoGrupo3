@@ -16,6 +16,7 @@ public class VistaGerente extends javax.swing.JFrame {
      */
     public VistaGerente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

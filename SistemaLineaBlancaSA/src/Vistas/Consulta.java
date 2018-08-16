@@ -5,6 +5,7 @@ public class Consulta extends javax.swing.JFrame {
     /** Creates new form frmConsulta */
     public Consulta() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
