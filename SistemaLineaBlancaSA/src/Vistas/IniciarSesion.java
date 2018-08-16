@@ -1,16 +1,32 @@
 
 package Vistas;
 
+import Conexion.Conexion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class IniciarSesion extends javax.swing.JFrame {
+    
     private static IniciarSesion instancia=null;
-  
-    private IniciarSesion() {
+    public static Conexion conection;
+    public Statement stm;
+    
+    public IniciarSesion() {
+        this.conection = new Conexion();
+        this.stm = conection.getStm();
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    public IniciarSesion(Conexion conection) {
+        this.conection = conection;
+        this.stm = conection.getStm();
+    }
+ 
     private synchronized static void crearInstancia(){
         if(instancia==null){
             instancia=new IniciarSesion();
@@ -69,8 +85,6 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Yoselin\\Documents\\NetBeansProjects\\SistemaLineaBlancaSA\\src\\Imagenes\\color.png")); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,26 +136,37 @@ public class IniciarSesion extends javax.swing.JFrame {
         String user,pwd;
         user=txtUsuario.getText();
         pwd = txtPasword.getText();
-        if(user.equals("admi")&& pwd.equals("12")){
-            VistaAdministrador vista=new VistaAdministrador();
-            vista.setVisible(true);
-            this.setVisible(false);
-        }else if(user.equals("superA")&& pwd.equals("12")){
-            VistaSuperadministrador vista=new VistaSuperadministrador();
-            vista.setVisible(true);
-            this.setVisible(false);
-        }else if (user.equals("gerent") &&pwd.equals("12")){
-            VistaGerente vista=new VistaGerente();
-            vista.setVisible(true);
-            this.setVisible(false);
-        }else if (user.equals("vend") && pwd.equals("12")){
-            VistaVendedor vista=new VistaVendedor();
-            vista.setVisible(true);
-            this.setVisible(false);
+        int tipo = 0;
+        String query = "SELECT * FROM Usuarios u where u.usuario='"+user+"' AND u.contraseña='"+pwd+"';";
+        try {
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()){
+                //System.out.println(rs.getString(1));
+                tipo = rs.getInt("idtipo");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-        else{
+        if(tipo == 1){
+            VistaSuperadministrador VS = new VistaSuperadministrador();
+            VS.setVisible(true);
+            this.setVisible(false);
+        }else if(tipo ==2){
+            VistaAdministrador VA = new VistaAdministrador();
+            VA.setVisible(true);
+            this.setVisible(false);
+        }else if(tipo == 3){
+            VistaGerente VG = new VistaGerente();
+            VG.setVisible(true);
+            this.setVisible(false);
+        }else if(tipo == 4){
+            VistaVendedor VV = new VistaVendedor();
+            VV.setVisible(true);
+            this.setVisible(false);
+        }else{
             JOptionPane.showMessageDialog(null, "usuario o contraseña es incorrecto");
         }
+       
         
         
     }//GEN-LAST:event_btIngresarActionPerformed
