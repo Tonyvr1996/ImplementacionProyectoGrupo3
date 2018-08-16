@@ -7,7 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JEditorPane;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class IniciarSesion extends javax.swing.JFrame {
     
@@ -193,8 +200,130 @@ public class IniciarSesion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btIngresarActionPerformed
 
+    public static Conexion getConection() {
+        return conection;
+    }
+
+    public static void setConection(Conexion conection) {
+        IniciarSesion.conection = conection;
+    }
+
+    public Statement getStm() {
+        return stm;
+    }
+
+    public void setStm(Statement stm) {
+        this.stm = stm;
+    }
+
+    public JButton getBtIngresar() {
+        return btIngresar;
+    }
+
+    public void setBtIngresar(JButton btIngresar) {
+        this.btIngresar = btIngresar;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public JColorChooser getjColorChooser1() {
+        return jColorChooser1;
+    }
+
+    public void setjColorChooser1(JColorChooser jColorChooser1) {
+        this.jColorChooser1 = jColorChooser1;
+    }
+
+    public JEditorPane getjEditorPane1() {
+        return jEditorPane1;
+    }
+
+    public void setjEditorPane1(JEditorPane jEditorPane1) {
+        this.jEditorPane1 = jEditorPane1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public String getTxtPasword() {
+        return txtPasword.getText();
+    }
+
+    public void setTxtPasword(JPasswordField txtPasword) {
+        this.txtPasword = txtPasword;
+    }
+
+    public String getTxtUsuario() {
+        return txtUsuario.getText();
+    }
+
+    public void setTxtUsuario(JTextField txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        txtUsuario.setText("");
+        txtPasword.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
