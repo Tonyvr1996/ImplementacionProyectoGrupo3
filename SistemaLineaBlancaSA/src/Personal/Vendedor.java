@@ -5,10 +5,19 @@
  */
 package Personal;
 
+import Constantes.ConstantesTipoPersonal;
+import Controladores.ControlVendedor;
+
 /**
  *
  * @author san_t
  */
-public class Vendedor {
+public class Vendedor extends Personal{
+
+    public Vendedor(String identificacion, String nombres, String apellidos, int Edad, String usuario) {
+        super(identificacion, nombres, apellidos, Edad, usuario);
+        this.tipoPersonal = ConstantesTipoPersonal.VENDEDOR;
+        control = new ControlVendedor(this);
+    }
     
 }
