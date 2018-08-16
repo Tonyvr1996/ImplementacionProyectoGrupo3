@@ -4,13 +4,17 @@ package Vistas;
 import javax.swing.JOptionPane;
 
 public class IniciarSesion extends javax.swing.JFrame {
-
+    private static final IniciarSesion instancia=new IniciarSesion();
   
-    public IniciarSesion() {
+    private IniciarSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    public static IniciarSesion getInstancia(){
+            return instancia;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

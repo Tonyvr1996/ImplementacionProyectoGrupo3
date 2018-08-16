@@ -17,7 +17,7 @@ public class Sistema {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new IniciarSesion().setVisible(true);
-                IniciarSesion login=new IniciarSesion();
+                IniciarSesion login=IniciarSesion.getInstancia();
                 login.setVisible(true);
             }
         });
