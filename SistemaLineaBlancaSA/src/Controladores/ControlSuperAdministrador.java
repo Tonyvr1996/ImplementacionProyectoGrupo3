@@ -5,23 +5,23 @@
  */
 package Controladores;
 
-import Personal.Administrador;
-import Vistas.VistaAdministrador;
+import Personal.SuperAdministrador;
+import Vistas.VistaSuperadministrador;
 import java.awt.event.ActionEvent;
 
 /**
  *
  * @author san_t
  */
-public class ControlAdministrador implements Controlador{
+public class ControlSuperAdministrador implements Controlador {
     
-    private VistaAdministrador ventana;
-    private Administrador administrador;
+    private VistaSuperadministrador ventana;
+    private SuperAdministrador SuperAdministrador;
     
     
-    public ControlAdministrador(Administrador administrador)  {
-        ventana = new VistaAdministrador();
-        this.administrador = administrador;
+    public ControlSuperAdministrador(SuperAdministrador SuperAdministrador)  {
+        ventana = new VistaSuperadministrador();
+        this.SuperAdministrador = SuperAdministrador;
     }
     
     @Override
