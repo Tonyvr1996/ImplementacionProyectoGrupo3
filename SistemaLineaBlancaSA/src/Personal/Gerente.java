@@ -5,6 +5,7 @@
  */
 package Personal;
 
+import Articulo.ArticuloFactory;
 import Constantes.ConstantesTipoPersonal;
 import Controladores.ControlGerente;
 
@@ -20,6 +21,50 @@ public class Gerente extends Personal{
         control = new ControlGerente(this);
     }
     
-    
+    public void consultaVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void consultaCliente() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void consultaCotizacion() {
+        // TODO implement here
+    }
+
+    /**
+     * @param Vendedor
+     */
+    public void generarReporteVendedor(Vendedor Vendedor) {
+        // TODO implement here
+    }
+
+    /**
+     * @param Articulo
+     */
+    public void generarReporteArticulo(ArticuloFactory Articulo) {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void generarReporteClientes() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void consultarReporte() {
+        // TODO implement here
+    }
     
 }

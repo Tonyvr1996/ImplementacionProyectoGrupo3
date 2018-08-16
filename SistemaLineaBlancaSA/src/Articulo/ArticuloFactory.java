@@ -9,12 +9,12 @@ package Articulo;
  *
  * @author san_t
  */
-public abstract class Articulo {
+public abstract class ArticuloFactory {
     
     private String tipo,modelo,marca;
     private boolean disponible;
 
-    public Articulo(String tipo, String modelo, String marca, boolean disponible) {
+    public ArticuloFactory(String tipo, String modelo, String marca, boolean disponible) {
         this.tipo = tipo;
         this.modelo = modelo;
         this.marca = marca;

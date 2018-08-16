@@ -20,4 +20,37 @@ public class Vendedor extends Personal{
         control = new ControlVendedor(this);
     }
     
+    public void agregarCliente() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void realizarVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void realizarCotizacion() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void solicitarPermisoEdicionVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void solicitarPermisoEdicionFactura() {
+        // TODO implement here
+    }
+
+    
 }

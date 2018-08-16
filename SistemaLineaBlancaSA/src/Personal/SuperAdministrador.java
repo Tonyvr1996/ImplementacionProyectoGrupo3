@@ -20,6 +20,78 @@ public class SuperAdministrador extends Personal{
         control = new ControlSuperAdministrador(this);
     }
     
-    
+    public void consultaCliente() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void consultaVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void consultarCotizacion() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void agregarCliente() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void agregarVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void eliminarCliente() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void agregarUsuario() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void eliminarUsuario() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void agregarCotizacion() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void otorgarPermisoEdicionVenta() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void otorgarPersimoEdicionFactura() {
+        // TODO implement here
+    }
     
 }
