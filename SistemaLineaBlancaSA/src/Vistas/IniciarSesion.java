@@ -4,16 +4,33 @@ package Vistas;
 import javax.swing.JOptionPane;
 
 public class IniciarSesion extends javax.swing.JFrame {
-    private static final IniciarSesion instancia=new IniciarSesion();
+    private static IniciarSesion instancia=null;
   
     private IniciarSesion() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
-    public static IniciarSesion getInstancia(){
-            return instancia;
+    private synchronized static void crearInstancia(){
+        if(instancia==null){
+            instancia=new IniciarSesion();
+        }
     }
+    
+    public static IniciarSesion getInstancia(){
+        if (instancia==null){
+            crearInstancia();
+        }
+        return instancia;
+
+    }
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        throw new CloneNotSupportedException();
+    }
+    
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
