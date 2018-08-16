@@ -1,4 +1,5 @@
 Cómo descargar la base de datos:
-1. Abrir el cmd
-2. Ejecutar el comando:
-	pg_restore -d proyectods -U postgres proyectods.tar
+1. Crear una base de datos en pgadmin3
+2. Clic derecho sobre la base de datos creada
+3. Clic en la opcion Restore
+4. Elija el archivo proyectods.backup adjunto en el repositorio
