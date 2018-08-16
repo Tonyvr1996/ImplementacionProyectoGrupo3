@@ -5,6 +5,8 @@
  */
 package Controladores;
 
+import Personal.Administrador;
+import Vistas.VistaAdministrador;
 import java.awt.event.ActionEvent;
 
 /**
@@ -12,7 +14,16 @@ import java.awt.event.ActionEvent;
  * @author san_t
  */
 public class ControlAdministrador implements Controlador{
-
+    
+    private VistaAdministrador ventana;
+    private Administrador administrador;
+    
+    
+    public ControlAdministrador(Administrador administrador)  {
+        ventana = new VistaAdministrador();
+        this.administrador = administrador;
+    }
+    
     @Override
     public void presentarVista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
