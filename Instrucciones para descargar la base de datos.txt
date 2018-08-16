@@ -1,0 +1,4 @@
+Cómo descargar la base de datos:
+1. Abrir el cmd
+2. Ejecutar el comando:
+	pg_restore -d proyectods -U postgres proyectods.tar
