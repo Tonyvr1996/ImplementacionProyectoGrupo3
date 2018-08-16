@@ -9,7 +9,7 @@ package Articulo;
  *
  * @author san_t
  */
-public class Cocina extends Articulo{
+public class Cocina extends ArticuloFactory{
     
     public Cocina(String tipo, String modelo, String marca, boolean disponible) {
         super(tipo, modelo, marca, disponible);

@@ -9,7 +9,7 @@ package Articulo;
  *
  * @author san_t
  */
-public class Refrigerador extends Articulo {
+public class Refrigerador extends ArticuloFactory {
     
     public Refrigerador(String tipo, String modelo, String marca, boolean disponible) {
         super(tipo, modelo, marca, disponible);
