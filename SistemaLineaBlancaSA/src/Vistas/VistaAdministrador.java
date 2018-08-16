@@ -16,7 +16,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
      */
     public VistaAdministrador() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,14 +27,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         btAdministrarProductos = new javax.swing.JButton();
         btAdministrarVentas = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Administrador");
-
+        btAdministrarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/prodcuto.png"))); // NOI18N
         btAdministrarProductos.setText("Administrar productos");
         btAdministrarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,34 +41,31 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
 
+        btAdministrarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
         btAdministrarVentas.setText("Adminstrar ventas");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/administrator.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(btAdministrarProductos)
-                        .addGap(34, 34, 34)
-                        .addComponent(btAdministrarVentas)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(btAdministrarVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAdministrarProductos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAdministrarProductos)
-                    .addComponent(btAdministrarVentas))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
+                .addComponent(btAdministrarProductos)
+                .addGap(18, 18, 18)
+                .addComponent(btAdministrarVentas))
+            .addComponent(jLabel2)
         );
 
         pack();
@@ -107,6 +102,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -119,6 +116,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdministrarProductos;
     private javax.swing.JButton btAdministrarVentas;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
