@@ -72,7 +72,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdministrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdministrarProductosActionPerformed
+
         // TODO add your handling code here:
+        AdministrarProductos pr=new AdministrarProductos();
+        pr.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btAdministrarProductosActionPerformed
 
     /**
