@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+
+
 /**
  *
  * @author Yoselin
@@ -16,6 +18,7 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
      */
     public AdministrarUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,8 +31,7 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         crearUsuario = new javax.swing.JButton();
-        editarUsuario = new javax.swing.JButton();
-        eliminarUsuario = new javax.swing.JButton();
+        edtarEliminar = new javax.swing.JButton();
         consultarUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -42,17 +44,10 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
             }
         });
 
-        editarUsuario.setText("Editar Usuario");
-        editarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        edtarEliminar.setText("Editar/Eliminar Usuario");
+        edtarEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarUsuarioActionPerformed(evt);
-            }
-        });
-
-        eliminarUsuario.setText("Eliminar Usuario");
-        eliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarUsuarioActionPerformed(evt);
+                edtarEliminarActionPerformed(evt);
             }
         });
 
@@ -74,41 +69,29 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(edtarEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(eliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(consultarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(editarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(139, 139, 139))
+                        .addComponent(consultarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(consultarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(edtarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarUsuarioActionPerformed
-        // TODO add your handling code here:
-        EditarUsuario eU=new EditarUsuario();
-        eU.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_editarUsuarioActionPerformed
 
     private void consultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarUsuarioActionPerformed
         // TODO add your handling code here:
@@ -124,12 +107,16 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_crearUsuarioActionPerformed
 
-    private void eliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioActionPerformed
+    private void edtarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtarEliminarActionPerformed
         // TODO add your handling code here:
-        EliminarUsuario eU=new EliminarUsuario();
-        eU.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_eliminarUsuarioActionPerformed
+//        EliminarUsuario eU=new EliminarUsuario();
+//        eU.setVisible(true);
+//        this.setVisible(false);
+
+          EditarEliminar ed=new EditarEliminar();
+          ed.setVisible(true);
+          this.setVisible(false);
+    }//GEN-LAST:event_edtarEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +151,14 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -176,8 +171,7 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultarUsuario;
     private javax.swing.JButton crearUsuario;
-    private javax.swing.JButton editarUsuario;
-    private javax.swing.JButton eliminarUsuario;
+    private javax.swing.JButton edtarEliminar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

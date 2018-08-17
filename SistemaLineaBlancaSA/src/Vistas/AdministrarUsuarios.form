@@ -29,19 +29,15 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="edtarEliminar" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="eliminarUsuario" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="crearUsuario" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="consultarUsuario" min="-2" pref="120" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="crearUsuario" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="editarUsuario" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="consultarUsuario" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,17 +45,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="editarUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="crearUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="consultarUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="consultarUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="eliminarUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="edtarEliminar" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,20 +66,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearUsuarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="editarUsuario">
+    <Component class="javax.swing.JButton" name="edtarEliminar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Editar Usuario"/>
+        <Property name="text" type="java.lang.String" value="Editar/Eliminar Usuario"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarUsuarioActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="eliminarUsuario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Eliminar Usuario"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarUsuarioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtarEliminarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="consultarUsuario">
