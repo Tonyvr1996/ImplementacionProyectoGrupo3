@@ -16,6 +16,7 @@ public class EliminarUsuario extends javax.swing.JFrame {
      */
     public EliminarUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

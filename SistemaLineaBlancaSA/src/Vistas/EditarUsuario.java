@@ -16,6 +16,7 @@ public class EditarUsuario extends javax.swing.JFrame {
      */
     public EditarUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
