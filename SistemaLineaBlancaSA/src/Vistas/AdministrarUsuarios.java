@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Personal.SuperAdministrador;
+
 
 
 /**
@@ -113,9 +115,9 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
 
     private void consultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarUsuarioActionPerformed
         // TODO add your handling code here:
-        ConsultarUsuario cU=new ConsultarUsuario();
-        cU.setVisible(true);
-        this.setVisible(false);
+//        ConsultarUsuario cU=new ConsultarUsuario();
+//        cU.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_consultarUsuarioActionPerformed
 
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
@@ -138,11 +140,13 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
-                this.hide();
-        VistaSuperadministrador s=new VistaSuperadministrador();
-        s.setVisible(true);
-        
+        //this.hide();
+        SuperAdministrador a=new SuperAdministrador();
         this.setVisible(false);
+        
+//        VistaSuperadministrador s=new VistaSuperadministrador();
+//        s.setVisible(true);
+
 
     }//GEN-LAST:event_regresarActionPerformed
 
@@ -188,7 +192,7 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+               /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdministrarUsuarios().setVisible(true);
@@ -197,7 +201,7 @@ public class AdministrarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton consultarUsuario;
+    public static javax.swing.JButton consultarUsuario;
     private javax.swing.JButton crearUsuario;
     private javax.swing.JButton edtarEliminar;
     private javax.swing.JLabel jLabel1;
