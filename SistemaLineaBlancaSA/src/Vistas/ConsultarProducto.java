@@ -5,6 +5,14 @@
  */
 package Vistas;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 
 
 
@@ -14,13 +22,52 @@ package Vistas;
  * @author Usuario
  */
 public class ConsultarProducto extends javax.swing.JFrame {
+    
+    private DefaultTableModel modeloDefault = new DefaultTableModel();
+    private LinkedList<String[]> datos = new LinkedList();
 
     /**
      * Creates new form VistaAdministrador
      */
     public ConsultarProducto() {
-        
         initComponents();
+        this.setLocationRelativeTo(null);
+        modeloDefault.addColumn("idProducto");
+        modeloDefault.addColumn("Nombre");
+        modeloDefault.addColumn("Tipo");
+        modeloDefault.addColumn("Marca");
+        modeloDefault.addColumn("Precio");
+        try {
+            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
+            while (rs.next()) {
+                int tipo;
+                int marca;
+                String[] dato = new String[5];
+                dato[0] = rs.getString("idArticulo");
+                dato[1] = rs.getString("NombreModelo");
+                dato[4] = String.valueOf(rs.getFloat("Precio"));
+                tipo = rs.getInt("idTipoArticulo");
+                marca = rs.getInt("idMarca");
+                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
+                while(rs1.next()){
+                    String nombre = rs1.getString("Nombre");
+                    dato[2] = nombre;
+                }
+                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
+                while(rs2.next()){
+                    String nombre = rs2.getString("Nombre");
+                    dato[3] = nombre;
+                }
+                datos.add(dato);
+                modeloDefault.addRow(dato);
+            }
+            TablaUsuario.setModel(modeloDefault);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -90,6 +137,11 @@ public class ConsultarProducto extends javax.swing.JFrame {
 
         botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/find.png"))); // NOI18N
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,6 +216,24 @@ public class ConsultarProducto extends javax.swing.JFrame {
     private void BotonDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonDescripcionActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+        modeloBusqueda.addColumn("idProducto");
+        modeloBusqueda.addColumn("Nombre");
+        modeloBusqueda.addColumn("Tipo");
+        modeloBusqueda.addColumn("Marca");
+        modeloBusqueda.addColumn("Precio");
+        for(String[] ob: datos){
+            boolean validacion = false;
+            for(String str: ob){
+                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+            }
+            if(validacion) modeloBusqueda.addRow(ob);
+        }
+        this.TablaUsuario.setModel(modeloBusqueda);
+    }//GEN-LAST:event_botonBuscarActionPerformed
     
     /**
      * @param args the command line arguments

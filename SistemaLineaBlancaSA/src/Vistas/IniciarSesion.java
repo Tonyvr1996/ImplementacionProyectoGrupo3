@@ -167,7 +167,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         user=txtUsuario.getText();
         pwd = txtPasword.getText();
         int tipo = 0;
-        String query = "SELECT * FROM Usuarios u where u.usuario='"+user+"' AND u.contraseña='"+pwd+"';";
+        String query = "SELECT * FROM Usuarios u where u.usuario='"+user+"' AND u.contraseña='"+pwd+"' AND eliminado = false;";
         try {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()){
@@ -196,7 +196,7 @@ public class IniciarSesion extends javax.swing.JFrame {
             VV.setVisible(true);
             this.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
+            JOptionPane.showMessageDialog(null, "Ocurrió un error. Ingrese nuevamente los datos");
         }
        
         
