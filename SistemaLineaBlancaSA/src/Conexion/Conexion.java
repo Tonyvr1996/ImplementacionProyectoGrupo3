@@ -19,7 +19,7 @@ public class Conexion {
     private Statement stm;
     
     public Conexion(){
-        Connection c = null;
+        //Connection c = null;
         try {
            c = DriverManager
               .getConnection("jdbc:postgresql://127.0.0.1:5432/proyectods",
@@ -39,6 +39,10 @@ public class Conexion {
     }
 
     public static Connection getConection() {
+        return c;
+    }
+    
+    public Connection getConnection(){
         return c;
     }
 }

@@ -97,17 +97,15 @@
                                       <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel4" alignment="0" pref="77" max="32767" attributes="0"/>
                                       <Component id="jLabel3" max="32767" attributes="0"/>
-                                      <Component id="jLabel5" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="TextoCedula" max="32767" attributes="0"/>
+                                      <Component id="TextoCedula" pref="115" max="32767" attributes="0"/>
                                       <Component id="TextoNombre" max="32767" attributes="0"/>
                                       <Component id="TextoApellido" max="32767" attributes="0"/>
-                                      <Component id="TextoEdad" pref="115" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel8" min="-2" pref="77" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -122,11 +120,6 @@
                                           <Component id="jLabel7" min="-2" pref="77" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="TextoUsuario" min="-2" pref="142" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel9" min="-2" pref="77" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="TextoSueldo" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -162,14 +155,7 @@
                               <Component id="TextoApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TextoContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="TextoEdad" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextoSueldo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -190,11 +176,6 @@
                     <Property name="text" type="java.lang.String" value="Identificacion"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Edad"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Funcion"/>
@@ -208,11 +189,6 @@
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Sueldo(en $)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TextoCedula">
@@ -236,11 +212,6 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextoEdad">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JTextField" name="TextoUsuario">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextoUsuarioActionPerformed"/>
@@ -250,14 +221,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TextoContrase&#xf1;a">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="TextoSueldo">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextoSueldoActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
@@ -319,6 +282,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Guardar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonGuardarActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>

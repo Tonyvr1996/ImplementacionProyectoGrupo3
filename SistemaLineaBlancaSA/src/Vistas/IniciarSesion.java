@@ -193,7 +193,7 @@ public class IniciarSesion extends javax.swing.JFrame {
             VV.setVisible(true);
             this.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(null, "usuario o contraseña es incorrecto");
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta");
         }
        
         

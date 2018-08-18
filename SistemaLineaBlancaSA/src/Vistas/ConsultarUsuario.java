@@ -5,9 +5,16 @@
  */
 package Vistas;
 
-
-
-
+import Conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,9 +25,43 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form VistaAdministrador
      */
+    private DefaultTableModel modeloDefault = new DefaultTableModel();
+    private LinkedList<String[]> datos = new LinkedList();
+    
     public ConsultarUsuario() {
-        
         initComponents();
+        this.setLocationRelativeTo(null);
+        modeloDefault.addColumn("idUsuario");
+        modeloDefault.addColumn("Nombres");
+        modeloDefault.addColumn("Apellidos");
+        modeloDefault.addColumn("Cédula");
+        modeloDefault.addColumn("Usuario");
+        modeloDefault.addColumn("Tipo");
+        try {
+            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
+            while (rs.next()) {
+                int tipo = 0;
+                String[] dato = new String[6];
+                dato[0] = rs.getString("idUsuario");
+                dato[1] = rs.getString("Nombres");
+                dato[2] = rs.getString("Apellidos");
+                dato[3] = rs.getString("Cedula");
+                dato[4] = rs.getString("Usuario");
+                tipo = rs.getInt("idTipo");
+                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
+                while(rs1.next()){
+                    String nombre = rs1.getString("Nombre");
+                    dato[5] = nombre;
+                }
+                datos.add(dato);
+                modeloDefault.addRow(dato);
+            }
+            TablaUsuario.setModel(modeloDefault);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -80,6 +121,11 @@ public class ConsultarUsuario extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/find.png"))); // NOI18N
         jButton6.setText("Buscar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -128,7 +174,7 @@ public class ConsultarUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +192,25 @@ public class ConsultarUsuario extends javax.swing.JFrame {
     private void RadioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RadioBotonNombreActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+        modeloBusqueda.addColumn("idUusario");
+        modeloBusqueda.addColumn("Nombres");
+        modeloBusqueda.addColumn("Apellidos");
+        modeloBusqueda.addColumn("Cédula");
+        modeloBusqueda.addColumn("Usuario");
+        modeloBusqueda.addColumn("Tipo");
+        for(String[] ob: datos){
+            boolean validacion = false;
+            for(String str: ob){
+                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+            }
+            if(validacion) modeloBusqueda.addRow(ob);
+        }
+        this.TablaUsuario.setModel(modeloBusqueda);
+    }//GEN-LAST:event_jButton6ActionPerformed
     
     /**
      * @param args the command line arguments

@@ -5,6 +5,16 @@
  */
 package Vistas;
 
+import Conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 
 
 
@@ -24,6 +34,10 @@ public class CrearUsuario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    public boolean estaVacio(JTextField campo){
+        if(campo.getText().equals("")) return true;
+        return false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,18 +55,14 @@ public class CrearUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         TextoCedula = new javax.swing.JTextField();
         TextoNombre = new javax.swing.JTextField();
         TextoApellido = new javax.swing.JTextField();
-        TextoEdad = new javax.swing.JTextField();
         TextoUsuario = new javax.swing.JTextField();
         TextoContraseña = new javax.swing.JTextField();
-        TextoSueldo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         Funciones_o_Cargos = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
@@ -66,15 +76,11 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jLabel4.setText("Identificacion");
 
-        jLabel5.setText("Edad");
-
         jLabel6.setText("Funcion");
 
         jLabel7.setText("Usuario");
 
         jLabel8.setText("Contraseña");
-
-        jLabel9.setText("Sueldo(en $)");
 
         TextoCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,12 +97,6 @@ public class CrearUsuario extends javax.swing.JFrame {
         TextoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextoUsuarioActionPerformed(evt);
-            }
-        });
-
-        TextoSueldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextoSueldoActionPerformed(evt);
             }
         });
 
@@ -121,16 +121,14 @@ public class CrearUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TextoCedula)
+                            .addComponent(TextoCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                             .addComponent(TextoNombre)
-                            .addComponent(TextoApellido)
-                            .addComponent(TextoEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                            .addComponent(TextoApellido))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,11 +140,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextoSueldo))))
+                                .addComponent(TextoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -173,17 +167,16 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addGap(74, 74, 74))
         );
 
         BotonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         BotonGuardar.setText("Guardar");
+        BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -252,13 +245,42 @@ public class CrearUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoUsuarioActionPerformed
 
-    private void TextoSueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoSueldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextoSueldoActionPerformed
-
     private void TextoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoCedulaActionPerformed
+
+    private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
+        // TODO add your handling code here:
+        String cedula = TextoCedula.getText();
+        String nombres = TextoNombre.getText();
+        String apellidos = TextoApellido.getText();
+        String usuario = TextoCedula.getText();
+        String contrasenia = TextoContraseña.getText();
+        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
+        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
+            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+        } else if(cedula.length()!=10){
+            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
+        }else {
+            String query = "INSERT INTO Usuarios(Nombres,Apellidos,Cedula,Usuario,Contraseña,idTipo) VALUES (?,?,?,?,?,?)";
+            try{
+                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+                ps.setString(1,nombres);
+                ps.setString(2,apellidos);
+                ps.setString(3,cedula);
+                ps.setString(4,usuario);
+                ps.setString(5,contrasenia);
+                ps.setInt(6,tipo);
+                ps.executeUpdate();
+                VistaSuperadministrador vs = new VistaSuperadministrador();
+                JOptionPane.showMessageDialog(null, "Usuario ingresado correctamente");
+                this.setVisible(false);
+                vs.setVisible(true);
+            }catch (SQLException ex) {
+                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_BotonGuardarActionPerformed
     
     /**
      * @param args the command line arguments
@@ -318,19 +340,15 @@ public class CrearUsuario extends javax.swing.JFrame {
     public static javax.swing.JTextField TextoApellido;
     public static javax.swing.JTextField TextoCedula;
     public static javax.swing.JTextField TextoContraseña;
-    public static javax.swing.JTextField TextoEdad;
     public static javax.swing.JTextField TextoNombre;
-    public static javax.swing.JTextField TextoSueldo;
     public static javax.swing.JTextField TextoUsuario;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
