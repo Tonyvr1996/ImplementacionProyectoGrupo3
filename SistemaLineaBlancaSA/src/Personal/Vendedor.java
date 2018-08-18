@@ -13,13 +13,23 @@ import Controladores.ControlVendedor;
  * @author san_t
  */
 public class Vendedor extends Personal{
+    
+    
+    
+    public Vendedor() {
+    }
 
-    public Vendedor(String identificacion, String nombres, String apellidos, int Edad, String usuario) {
-        super(identificacion, nombres, apellidos, Edad, usuario);
+//    public Vendedor(String identificacion, String nombres, String apellido, String usuario) {
+//        super(identificacion, nombres, apellidos, usuario);
+//        this.tipoPersonal = ConstantesTipoPersonal.VENDEDOR;
+//        control = new ControlVendedor(this);
+//    }
+    public Vendedor(String identificacion, String nombres, String apellidos, String usuario) {
+        super(identificacion, nombres, apellidos, usuario);
         this.tipoPersonal = ConstantesTipoPersonal.VENDEDOR;
         control = new ControlVendedor(this);
     }
-    
+
     public void agregarCliente() {
         // TODO implement here
     }
