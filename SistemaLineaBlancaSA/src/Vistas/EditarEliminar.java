@@ -387,6 +387,43 @@ public class EditarEliminar extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
+        String cedula = TextoCedula.getText();
+        String nombres = TextoNombre.getText();
+        String apellidos = TextoApellido.getText();
+        String usuario = TextoCedula.getText();
+        String contrasenia = TextoContraseña.getText();
+        String id = TextoId.getText();
+        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
+        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
+            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+        } else if(cedula.length()!=10){
+            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
+        }else {
+            String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
+            try{
+                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs = stm.executeQuery(query1);
+                String idusuario;
+                while(rs.next()){
+                    int idus = rs.getInt("idUsuario");
+                    String query2 = "UPDATE Usuarios SET eliminado = true WHERE idUsuario="+idus+";";
+                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                    int n = ps.executeUpdate();
+                    VistaSuperadministrador vs = new VistaSuperadministrador();
+                    if(n>0){
+                        JOptionPane.showMessageDialog(null, "Usuario eliminado de la base de datos");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Ocurrió un error");
+                    }
+                    this.setVisible(false);
+                    vs.setVisible(true);
+                }
+                
+            }catch (SQLException ex) {
+                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void RadioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonNombreActionPerformed

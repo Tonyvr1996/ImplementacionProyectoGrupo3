@@ -254,7 +254,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         String cedula = TextoCedula.getText();
         String nombres = TextoNombre.getText();
         String apellidos = TextoApellido.getText();
-        String usuario = TextoCedula.getText();
+        String usuario = TextoUsuario.getText();
         String contrasenia = TextoContraseña.getText();
         int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
         if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
