@@ -31,7 +31,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        AdministrarUsu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         botonCerrarSesion = new javax.swing.JButton();
 
@@ -53,11 +53,11 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/if_user-group_285648.png"))); // NOI18N
-        jButton3.setText("Administrar Usuarios");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AdministrarUsu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/if_user-group_285648.png"))); // NOI18N
+        AdministrarUsu.setText("Administrar Usuarios");
+        AdministrarUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AdministrarUsuActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AdministrarUsu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -94,7 +94,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(AdministrarUsu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -118,12 +118,12 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void AdministrarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministrarUsuActionPerformed
         // TODO add your handling code here:
-        AdministrarUsuarios aU=new AdministrarUsuarios();
-        aU.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+//        AdministrarUsuarios aU=new AdministrarUsuarios();
+//        aU.setVisible(true);
+//        this.setVisible(false);
+    }//GEN-LAST:event_AdministrarUsuActionPerformed
 
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed
         // TODO add your handling code here:
@@ -174,10 +174,10 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton AdministrarUsu;
     private javax.swing.JButton botonCerrarSesion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,10 @@ public class SuperAdministrador extends Personal{
         control = new ControlSuperAdministrador(this);
     }
     
+    public SuperAdministrador(){
+        control = new ControlSuperAdministrador(this);
+    }
+    
     public void consultaCliente() {
         // TODO implement here
     }
