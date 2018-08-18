@@ -14,9 +14,13 @@ import Controladores.ControlSuperAdministrador;
  */
 public class SuperAdministrador extends Personal{
 
-    public SuperAdministrador(String identificacion, String nombres, String apellidos, int Edad, String usuario) {
-        super(identificacion, nombres, apellidos, Edad, usuario);
+    public SuperAdministrador(String identificacion, String nombres, String apellidos,  String usuario) {
+        super(identificacion, nombres, apellidos,  usuario);
         this.tipoPersonal = ConstantesTipoPersonal.SUPERADMIN;
+        control = new ControlSuperAdministrador(this);
+    }
+    
+    public SuperAdministrador(){
         control = new ControlSuperAdministrador(this);
     }
     

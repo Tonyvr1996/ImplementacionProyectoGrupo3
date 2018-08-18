@@ -14,7 +14,7 @@ import Vistas.IniciarSesion;
  */
 public class Sistema {
     
-    private static Conexion conexion;
+    private static Conexion contonyexion;
     private static IniciarSesion login;
     
     public static void main(String args[]) {

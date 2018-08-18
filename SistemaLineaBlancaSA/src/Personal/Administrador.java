@@ -14,8 +14,8 @@ import Controladores.ControlAdministrador;
  */
 public class Administrador extends Personal{
     
-    public Administrador(String identificacion, String nombres, String apellidos, int Edad, String usuario) {
-        super(identificacion, nombres, apellidos, Edad, usuario);
+    public Administrador(String identificacion, String nombres, String apellidos,  String usuario) {
+        super(identificacion, nombres, apellidos, usuario);
         this.tipoPersonal = ConstantesTipoPersonal.ADMINISTRADOR;
         control = new ControlAdministrador(this);
     }

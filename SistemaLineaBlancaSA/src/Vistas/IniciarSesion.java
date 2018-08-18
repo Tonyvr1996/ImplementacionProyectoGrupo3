@@ -2,6 +2,7 @@
 package Vistas;
 
 import Conexion.Conexion;
+import Personal.SuperAdministrador;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -177,9 +178,11 @@ public class IniciarSesion extends javax.swing.JFrame {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(tipo == 1){
-            VistaSuperadministrador VS = new VistaSuperadministrador();
-            VS.setVisible(true);
-            this.setVisible(false);
+//            VistaSuperadministrador VS = new VistaSuperadministrador();
+//            VS.setVisible(true);
+//            this.setVisible(false);
+              SuperAdministrador a=new SuperAdministrador();
+              this.setVisible(false);
         }else if(tipo ==2){
             VistaAdministrador VA = new VistaAdministrador();
             VA.setVisible(true);

@@ -15,7 +15,7 @@ public abstract class Personal {
     protected String identificacion;
     protected String nombres;
     protected String apellidos;
-    protected int Edad;
+
     protected String usuario;
     protected int tipoPersonal;
     protected Controlador control;
@@ -23,11 +23,10 @@ public abstract class Personal {
     public Personal() {
     } 
 
-    public Personal(String identificacion, String nombres, String apellidos, int Edad, String usuario) {
+    public Personal(String identificacion, String nombres, String apellidos, String usuario) {
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.Edad = Edad;
         this.usuario = usuario;
     }
     
@@ -55,13 +54,7 @@ public abstract class Personal {
         this.apellidos = apellidos;
     }
 
-    public int getEdad() {
-        return Edad;
-    }
-
-    public void setEdad(int Edad) {
-        this.Edad = Edad;
-    }
+    
 
     public Controlador getControl() {
         return control;
