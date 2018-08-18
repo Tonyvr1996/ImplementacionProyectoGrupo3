@@ -65,6 +65,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         TextoContraseña = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         Funciones_o_Cargos = new javax.swing.JComboBox<>();
+        regresar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         BotonGuardar = new javax.swing.JButton();
 
@@ -110,6 +111,16 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
+        regresar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        regresar.setForeground(new java.awt.Color(0, 102, 102));
+        regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar.png"))); // NOI18N
+        regresar.setText("Regresar");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -143,6 +154,10 @@ public class CrearUsuario extends javax.swing.JFrame {
                                 .addComponent(TextoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(regresar)
+                .addGap(142, 142, 142))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +182,9 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
+                .addGap(40, 40, 40)
+                .addComponent(regresar)
+                .addContainerGap())
         );
 
         BotonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
@@ -281,6 +298,13 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BotonGuardarActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        AdministrarUsuarios s=new AdministrarUsuarios();
+        s.setVisible(true);        
+        this.setVisible(false);
+    }//GEN-LAST:event_regresarActionPerformed
     
     /**
      * @param args the command line arguments
@@ -353,5 +377,6 @@ public class CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

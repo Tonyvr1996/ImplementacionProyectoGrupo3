@@ -23,7 +23,7 @@ public class Conexion {
         try {
            c = DriverManager
               .getConnection("jdbc:postgresql://127.0.0.1:5432/proyectods",
-              "postgres", "101112");
+              "postgres", "12345678");
            stm = c.createStatement();
            c.setAutoCommit(false);
         } catch (Exception e) {
