@@ -112,7 +112,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AdministrarProductos ap = new AdministrarProductos();
+        AdministrarProductosSuperAdmi ap = new AdministrarProductosSuperAdmi();
         this.setVisible(false);
         ap.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -123,9 +123,9 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
     private void AdministrarUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdministrarUsuActionPerformed
         // TODO add your handling code here:
-//        AdministrarUsuarios aU=new AdministrarUsuarios();
-//        aU.setVisible(true);
-//        this.setVisible(false);
+        AdministrarUsuarios aU=new AdministrarUsuarios();
+        aU.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_AdministrarUsuActionPerformed
 
     private void botonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarSesionActionPerformed

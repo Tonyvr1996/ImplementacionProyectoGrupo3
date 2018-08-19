@@ -221,7 +221,7 @@ public class CrearProducto extends javax.swing.JFrame {
             try{
                 PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
                 int n = ps.executeUpdate();
-                AdministrarProductos ap = new AdministrarProductos();
+                AdministrarProductosSuperAdmi ap = new AdministrarProductosSuperAdmi();
                 if(n>0){
                     JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
                     this.setVisible(false);

@@ -74,7 +74,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private void btAdministrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdministrarProductosActionPerformed
 
         // TODO add your handling code here:
-        AdministrarProductos pr=new AdministrarProductos();
+        AdministrarProductosAdmi pr=new AdministrarProductosAdmi();
         pr.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btAdministrarProductosActionPerformed

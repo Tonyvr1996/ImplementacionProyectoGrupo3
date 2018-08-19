@@ -31,13 +31,11 @@
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jButton1" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="edtarEliminar" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="crearProducto" min="-2" pref="145" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="consultarUsuario" min="-2" pref="145" max="-2" attributes="0"/>
-                      </Group>
+                  <Component id="edtarEliminar" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="crearProducto" min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="consultarUsuario" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
