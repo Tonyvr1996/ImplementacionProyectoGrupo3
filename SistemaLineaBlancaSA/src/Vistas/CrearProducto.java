@@ -8,6 +8,7 @@ package Vistas;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 
@@ -26,6 +27,11 @@ public class CrearProducto extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public boolean estaVacio(JTextField campo){
+        if(campo.getText().equals("")) return true;
+        return false;
     }
     
     /**
@@ -204,25 +210,29 @@ public class CrearProducto extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtNombre.getText();
-        int tipo = jComboBox1.getSelectedIndex()+1;
-        int marca = jComboBox2.getSelectedIndex()+1;
-        float precio = Float.parseFloat(txtPrecio.getText());
-        String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
-        try{
-            PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
-            int n = ps.executeUpdate();
-            AdministrarProductos ap = new AdministrarProductos();
-            if(n>0){
-                JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
-                this.setVisible(false);
-                ap.setVisible(true);
-            }
-            else{
+        if(estaVacio(txtNombre) || estaVacio(txtPrecio))
+            JOptionPane.showMessageDialog(null,"Existen campos vacíos. Ingrese todos los datos");
+        else{
+            String nombre = txtNombre.getText();
+            int tipo = jComboBox1.getSelectedIndex()+1;
+            int marca = jComboBox2.getSelectedIndex()+1;
+            float precio = Float.parseFloat(txtPrecio.getText());
+            String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
+            try{
+                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+                int n = ps.executeUpdate();
+                AdministrarProductos ap = new AdministrarProductos();
+                if(n>0){
+                    JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
+                    this.setVisible(false);
+                    ap.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                }
+            }catch(SQLException e){
                 JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
             }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
         }
     }//GEN-LAST:event_BotonGuardarActionPerformed
     

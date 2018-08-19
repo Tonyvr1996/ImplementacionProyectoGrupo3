@@ -5,6 +5,17 @@
  */
 package Vistas;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 
 
 
@@ -14,13 +25,59 @@ package Vistas;
  * @author Usuario
  */
 public class EditarEliminarProducto extends javax.swing.JFrame {
+    
+    private DefaultTableModel modeloDefault = new DefaultTableModel();
+    private LinkedList<String[]> datos = new LinkedList();
 
     /**
      * Creates new form VistaAdministrador
      */
     public EditarEliminarProducto() {
-        
         initComponents();
+        this.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(null, "Para eliminar un producto sólo necesita ingresar el id del mismo");
+        modeloDefault.addColumn("idProducto");
+        modeloDefault.addColumn("Nombre");
+        modeloDefault.addColumn("Tipo");
+        modeloDefault.addColumn("Marca");
+        modeloDefault.addColumn("Precio");
+        try {
+            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos WHERE eliminado = false");
+            while (rs.next()) {
+                int tipo;
+                int marca;
+                String[] dato = new String[5];
+                dato[0] = rs.getString("idArticulo");
+                dato[1] = rs.getString("NombreModelo");
+                dato[4] = String.valueOf(rs.getFloat("Precio"));
+                tipo = rs.getInt("idTipoArticulo");
+                marca = rs.getInt("idMarca");
+                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
+                while(rs1.next()){
+                    String nombre = rs1.getString("Nombre");
+                    dato[2] = nombre;
+                }
+                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
+                while(rs2.next()){
+                    String nombre = rs2.getString("Nombre");
+                    dato[3] = nombre;
+                }
+                datos.add(dato);
+                modeloDefault.addRow(dato);
+            }
+            TablaUsuario.setModel(modeloDefault);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean estaVacio(JTextField campo){
+        if(campo.getText().equals("")) 
+            return true;
+        return false;
     }
     
     /**
@@ -43,15 +100,13 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
-        txtDescripcion = new javax.swing.JTextField();
-        txtMarca = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
-        txtColor = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         BotonEliminar = new javax.swing.JButton();
         Editar = new javax.swing.JButton();
@@ -77,15 +132,11 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo");
 
-        jLabel3.setText("Descripción");
+        jLabel3.setText("Precio");
 
         jLabel4.setText("Nombre");
 
         jLabel5.setText("Marca");
-
-        jLabel7.setText("id");
-
-        jLabel8.setText("color");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,19 +144,25 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
             }
         });
 
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
+
+        jLabel10.setText("Datos del Producto:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Linea Blanca" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indurama", "Durex", "Mabe" }));
+
+        jLabel6.setText("Id");
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
             }
         });
-
-        jLabel10.setText("Datos del Usuario:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -115,29 +172,27 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre)
-                            .addComponent(txtTipo)
-                            .addComponent(txtDescripcion)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtColor))))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,23 +202,21 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -223,6 +276,11 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
         RadiotextDescripcion.setText("Descripcion");
 
         jButton6.setText("Buscar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -293,12 +351,42 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
+        int id = Integer.parseInt(txtId.getText());
+        if(estaVacio(txtId)){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
+        }
+        else{
+            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
+            try{
+                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs = stm.executeQuery(query1);
+                String idusuario;
+                while(rs.next()){
+                    int idart = rs.getInt("idArticulo");
+                    String query2 = "UPDATE Articulos SET eliminado = true WHERE idArticulo="+idart+";";
+                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                    int n = ps.executeUpdate();
+                    if(n > 0){
+                        VistaSuperadministrador vs = new VistaSuperadministrador();
+                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+                        this.setVisible(false);
+                        vs.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
+                    }
+                }
+                
+            }catch (SQLException ex) {
+                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void RadioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonNombreActionPerformed
@@ -309,17 +397,72 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RadiotextIdActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        float precio = Float.parseFloat(txtPrecio.getText());
+        int id = Integer.parseInt(txtId.getText());
+        int tipo = jComboBox1.getSelectedIndex()+1;
+        int marca = jComboBox2.getSelectedIndex()+1;
+        if(estaVacio(txtNombre) || estaVacio(txtPrecio) || estaVacio(txtId)){
+            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+        }else {
+            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
+            try{
+                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs = stm.executeQuery(query1);
+                String idusuario;
+                while(rs.next()){
+                    int idart = rs.getInt("idArticulo");
+                    String query2 = "UPDATE Articulos SET NombreModelo = ? , idTipoArticulo = ? , idMarca = ? , Precio = ? WHERE idArticulo="+idart+";";
+                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                    ps.setString(1,nombre);
+                    ps.setInt(2,tipo);
+                    ps.setInt(3,marca);
+                    ps.setFloat(4,precio);
+                    int n = ps.executeUpdate();
+                    if(n > 0){
+                        VistaSuperadministrador vs = new VistaSuperadministrador();
+                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+                        this.setVisible(false);
+                        vs.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
+                    }
+                }
+                
+            }catch (SQLException ex) {
+                Logger.getLogger(EditarEliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_EditarActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+        modeloBusqueda.addColumn("idProducto");
+        modeloBusqueda.addColumn("Nombre");
+        modeloBusqueda.addColumn("Tipo");
+        modeloBusqueda.addColumn("Marca");
+        modeloBusqueda.addColumn("Precio");
+        for(String[] ob: datos){
+            boolean validacion = false;
+            for(String str: ob){
+                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+            }
+            if(validacion) modeloBusqueda.addRow(ob);
+        }
+        this.TablaUsuario.setModel(modeloBusqueda);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
     
     /**
      * @param args the command line arguments
@@ -398,25 +541,23 @@ public class EditarEliminarProducto extends javax.swing.JFrame {
     public static javax.swing.JRadioButton RadiotextId;
     public static javax.swing.JTable TablaUsuario;
     public static javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTextField jTextField5;
-    public static javax.swing.JTextField txtColor;
-    public static javax.swing.JTextField txtDescripcion;
-    public static javax.swing.JTextField txtId;
-    public static javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtId;
     public static javax.swing.JTextField txtNombre;
-    public static javax.swing.JTextField txtTipo;
+    public static javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

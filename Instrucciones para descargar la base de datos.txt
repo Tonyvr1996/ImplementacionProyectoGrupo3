@@ -1,5 +1,6 @@
 Cómo descargar la base de datos:
-1. Crear una base de datos en pgadmin3
+1. Crear una base de datos en pgadmin3 llamada "proyectods"
 2. Clic derecho sobre la base de datos creada
 3. Clic en la opcion Restore
 4. Elija el archivo proyectods.backup adjunto en el repositorio
+5. Clic en la opción Restore

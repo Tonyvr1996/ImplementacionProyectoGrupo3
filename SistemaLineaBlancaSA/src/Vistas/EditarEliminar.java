@@ -36,6 +36,7 @@ public class EditarEliminar extends javax.swing.JFrame {
     public EditarEliminar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        JOptionPane.showMessageDialog(null, "Para eliminar un usuario tiene que ingresar sólo el id");
         modeloDefault.addColumn("idUsuario");
         modeloDefault.addColumn("Nombres");
         modeloDefault.addColumn("Apellidos");
@@ -44,7 +45,7 @@ public class EditarEliminar extends javax.swing.JFrame {
         modeloDefault.addColumn("Tipo");
         try {
             Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
+            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
             while (rs.next()) {
                 int tipo = 0;
                 String[] dato = new String[6];
@@ -409,23 +410,14 @@ public class EditarEliminar extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
-        String cedula = TextoCedula.getText();
-        String nombres = TextoNombre.getText();
-        String apellidos = TextoApellido.getText();
-        String usuario = TextoCedula.getText();
-        String contrasenia = TextoContraseña.getText();
         String id = TextoId.getText();
-        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
-        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
-            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
-        } else if(cedula.length()!=10){
-            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
+        if(estaVacio(TextoId)){
+            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
         }else {
             String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
             try{
                 Statement stm = IniciarSesion.getConection().getConnection().createStatement();
                 ResultSet rs = stm.executeQuery(query1);
-                String idusuario;
                 while(rs.next()){
                     int idus = rs.getInt("idUsuario");
                     String query2 = "UPDATE Usuarios SET eliminado = true WHERE idUsuario="+idus+";";
