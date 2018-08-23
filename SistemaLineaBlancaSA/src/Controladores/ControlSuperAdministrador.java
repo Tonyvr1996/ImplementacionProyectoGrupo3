@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Personal.SuperAdministrador;
+import Persona.SuperAdministrador;
 
 import Vistas.VistaSuperadministrador;
 import java.awt.event.ActionEvent;

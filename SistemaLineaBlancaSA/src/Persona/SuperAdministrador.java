@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personal;
+package Persona;
 
 import Constantes.ConstantesTipoPersonal;
 import Controladores.ControlSuperAdministrador;
@@ -12,10 +12,13 @@ import Controladores.ControlSuperAdministrador;
  *
  * @author san_t
  */
-public class SuperAdministrador extends Personal{
-
-    public SuperAdministrador(String identificacion, String nombres, String apellidos,  String usuario) {
-        super(identificacion, nombres, apellidos,  usuario);
+public class SuperAdministrador extends Persona{
+     private String usuario;
+    private String contraseña;
+    public SuperAdministrador(String identificacion, String nombres, String apellidos,  String usuario,String contraseña) {
+        super(identificacion, nombres, apellidos);
+        this.usuario=usuario;
+        this.contraseña=contraseña;
         this.tipoPersonal = ConstantesTipoPersonal.SUPERADMIN;
         control = new ControlSuperAdministrador(this);
     }

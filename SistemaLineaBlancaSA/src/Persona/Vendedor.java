@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personal;
+package Persona;
 
 import Constantes.ConstantesTipoPersonal;
 import Controladores.ControlVendedor;
@@ -12,20 +12,19 @@ import Controladores.ControlVendedor;
  *
  * @author san_t
  */
-public class Vendedor extends Personal{
+public class Vendedor extends Persona{
     
-    
+     private String usuario;
+    private String contraseña;
     
     public Vendedor() {
     }
 
-//    public Vendedor(String identificacion, String nombres, String apellido, String usuario) {
-//        super(identificacion, nombres, apellidos, usuario);
-//        this.tipoPersonal = ConstantesTipoPersonal.VENDEDOR;
-//        control = new ControlVendedor(this);
-//    }
-    public Vendedor(String identificacion, String nombres, String apellidos, String usuario) {
-        super(identificacion, nombres, apellidos, usuario);
+
+    public Vendedor(String identificacion, String nombres, String apellidos, String usuario,String contraseña) {
+        super(identificacion, nombres, apellidos);
+        this.usuario=usuario;
+        this.contraseña=contraseña;
         this.tipoPersonal = ConstantesTipoPersonal.VENDEDOR;
         control = new ControlVendedor(this);
     }

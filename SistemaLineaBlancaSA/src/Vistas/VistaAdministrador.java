@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaAdministrador extends javax.swing.JFrame {
 
-    private DefaultTableModel modeloDefault = new DefaultTableModel();
+    //private DefaultTableModel modeloDefault = new DefaultTableModel();
     private LinkedList<String[]> datos = new LinkedList();
     
     private DefaultTableModel modeloDefault1 = new DefaultTableModel();
@@ -32,46 +32,46 @@ public class VistaAdministrador extends javax.swing.JFrame {
      */
     public VistaAdministrador() {
         initComponents();
-                this.setLocationRelativeTo(null);
-        modeloDefault.addColumn("idProducto");
-        modeloDefault.addColumn("Nombre");
-        modeloDefault.addColumn("Tipo");
-        modeloDefault.addColumn("Marca");
-        modeloDefault.addColumn("Precio");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
-            while (rs.next()) {
-                int tipo;
-                int marca;
-                String[] dato = new String[5];
-                dato[0] = rs.getString("idArticulo");
-                dato[1] = rs.getString("NombreModelo");
-                dato[4] = String.valueOf(rs.getFloat("Precio"));
-                tipo = rs.getInt("idTipoArticulo");
-                marca = rs.getInt("idMarca");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[2] = nombre;
-                }
-                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
-                while(rs2.next()){
-                    String nombre = rs2.getString("Nombre");
-                    dato[3] = nombre;
-                }
-                datos.add(dato);
-                modeloDefault.addRow(dato);
-            }
-            TablaUsuario.setModel(modeloDefault);
-        } catch (SQLException ex) {
-            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.setLocationRelativeTo(null);
+//        modeloDefault.addColumn("idProducto");
+//        modeloDefault.addColumn("Nombre");
+//        modeloDefault.addColumn("Tipo");
+//        modeloDefault.addColumn("Marca");
+//        modeloDefault.addColumn("Precio");
+//        try {
+//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
+//            while (rs.next()) {
+//                int tipo;
+//                int marca;
+//                String[] dato = new String[5];
+//                dato[0] = rs.getString("idArticulo");
+//                dato[1] = rs.getString("NombreModelo");
+//                dato[4] = String.valueOf(rs.getFloat("Precio"));
+//                tipo = rs.getInt("idTipoArticulo");
+//                marca = rs.getInt("idMarca");
+//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
+//                while(rs1.next()){
+//                    String nombre = rs1.getString("Nombre");
+//                    dato[2] = nombre;
+//                }
+//                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
+//                while(rs2.next()){
+//                    String nombre = rs2.getString("Nombre");
+//                    dato[3] = nombre;
+//                }
+//                datos.add(dato);
+//                modeloDefault.addRow(dato);
+//            }
+//            TablaUsuario.setModel(modeloDefault);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
         
-        
-        JOptionPane.showMessageDialog(null, "Para eliminar un producto sólo necesita ingresar el id del mismo");
+        //JOptionPane.showMessageDialog(null, "Para eliminar un producto sólo necesita ingresar el id del mismo");
         modeloDefault1.addColumn("idProducto");
         modeloDefault1.addColumn("Nombre");
         modeloDefault1.addColumn("Tipo");

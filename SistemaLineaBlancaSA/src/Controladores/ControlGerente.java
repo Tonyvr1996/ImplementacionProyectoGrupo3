@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Personal.Gerente;
+import Persona.Gerente;
 import Vistas.VistaGerente;
 import java.awt.event.ActionEvent;
 

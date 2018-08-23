@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personal;
+package Persona;
 
 import Controladores.Controlador;
 
@@ -11,7 +11,7 @@ import Controladores.Controlador;
  *
  * @author Usuario
  */
-public abstract class Personal {
+public abstract class Persona {
     protected String identificacion;
     protected String nombres;
     protected String apellidos;
@@ -20,14 +20,14 @@ public abstract class Personal {
     protected int tipoPersonal;
     protected Controlador control;
     
-    public Personal() {
+    public Persona() {
     } 
 
-    public Personal(String identificacion, String nombres, String apellidos, String usuario) {
+    public Persona(String identificacion, String nombres, String apellidos) {
         this.identificacion = identificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.usuario = usuario;
+        
     }
     
     public String getIdentificacion() {

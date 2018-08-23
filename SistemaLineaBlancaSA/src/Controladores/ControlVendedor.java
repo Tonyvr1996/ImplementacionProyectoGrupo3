@@ -5,7 +5,7 @@
  */
 package Controladores;
 
-import Personal.Vendedor;
+import Persona.Vendedor;
 import Vistas.VistaVendedor;
 import java.awt.event.ActionEvent;
 

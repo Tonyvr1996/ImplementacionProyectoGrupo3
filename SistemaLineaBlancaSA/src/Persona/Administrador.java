@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personal;
+package Persona;
 
 import Constantes.ConstantesTipoPersonal;
 import Controladores.ControlAdministrador;
@@ -12,10 +12,14 @@ import Controladores.ControlAdministrador;
  *
  * @author Usuario
  */
-public class Administrador extends Personal{
+public class Administrador extends Persona{
+    private String usuario;
+    private String contraseña;
     
-    public Administrador(String identificacion, String nombres, String apellidos,  String usuario) {
-        super(identificacion, nombres, apellidos, usuario);
+    public Administrador(String identificacion, String nombres, String apellidos,  String usuario,String contraseña) {
+        super(identificacion, nombres, apellidos);
+        this.usuario =usuario;
+        this.contraseña = contraseña;
         this.tipoPersonal = ConstantesTipoPersonal.ADMINISTRADOR;
         control = new ControlAdministrador(this);
     }

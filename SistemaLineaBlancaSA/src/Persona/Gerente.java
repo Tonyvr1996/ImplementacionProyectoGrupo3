@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Personal;
+package Persona;
 
 import Articulo.ArticuloFactory;
 import Constantes.ConstantesTipoPersonal;
@@ -13,10 +13,13 @@ import Controladores.ControlGerente;
  *
  * @author san_t
  */
-public class Gerente extends Personal{
-
-    public Gerente(String identificacion, String nombres, String apellidos,String usuario) {
-        super(identificacion, nombres, apellidos,usuario);
+public class Gerente extends Persona{
+    private String usuario;
+    private String contraseña;
+    public Gerente(String identificacion, String nombres, String apellidos,String usuario, String contraseña) {
+        super(identificacion, nombres, apellidos);
+        this.usuario=usuario;
+        this.contraseña=contraseña;
         this.tipoPersonal = ConstantesTipoPersonal.GERENTE;
         control = new ControlGerente(this);
     }

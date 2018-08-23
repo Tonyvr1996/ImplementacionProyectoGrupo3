@@ -2,7 +2,9 @@
 package Vistas;
 
 import Conexion.Conexion;
-import Personal.SuperAdministrador;
+import Persona.Administrador;
+import Persona.Persona;
+import Persona.SuperAdministrador;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -168,15 +170,14 @@ public class IniciarSesion extends javax.swing.JFrame {
         pwd = txtPasword.getText();
         int tipo = 0;
         String query = "SELECT * FROM Usuarios u where u.usuario='"+user+"' AND u.contraseña='"+pwd+"' AND eliminado = false;";
+        
         try {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()){
                 //System.out.println(rs.getString(1));
                 tipo = rs.getInt("idtipo");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            
+         
         if(tipo == 1){
             VistaSuperadministrador VS = new VistaSuperadministrador();
             VS.setVisible(true);
@@ -184,8 +185,9 @@ public class IniciarSesion extends javax.swing.JFrame {
 //              SuperAdministrador a=new SuperAdministrador();
 //              this.setVisible(false);
         }else if(tipo ==2){
-            VistaAdministrador VA = new VistaAdministrador();
-            VA.setVisible(true);
+            Persona VA = new Administrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+            VA.getControl().presentarVista();
+//VA.setVisible(true);
             this.setVisible(false);
         }else if(tipo == 3){
             VistaGerente VG = new VistaGerente();
@@ -197,6 +199,9 @@ public class IniciarSesion extends javax.swing.JFrame {
             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Ocurrió un error. Ingrese nuevamente los datos");
+        }}
+        }catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
        
         
