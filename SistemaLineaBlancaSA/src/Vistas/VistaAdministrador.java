@@ -857,20 +857,20 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario.setModel(modeloBusqueda);
+//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+//        modeloBusqueda.addColumn("idProducto");
+//        modeloBusqueda.addColumn("Nombre");
+//        modeloBusqueda.addColumn("Tipo");
+//        modeloBusqueda.addColumn("Marca");
+//        modeloBusqueda.addColumn("Precio");
+//        for(String[] ob: datos){
+//            boolean validacion = false;
+//            for(String str: ob){
+//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+//            }
+//            if(validacion) modeloBusqueda.addRow(ob);
+//        }
+//        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed

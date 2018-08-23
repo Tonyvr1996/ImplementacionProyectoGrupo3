@@ -9,6 +9,7 @@ import Persona.Administrador;
 import Vistas.IniciarSesion;
 import Vistas.VistaAdministrador;
 import static Vistas.VistaAdministrador.TablaUsuario;
+import static Vistas.VistaAdministrador.jTextField5;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,8 @@ public class ControlAdministrador implements Controlador{
     
     private VistaAdministrador ventana;
     private Administrador administrador;
-    
+    private DefaultTableModel modeloDefault = new DefaultTableModel();
+    private    LinkedList<String[]> datos = new LinkedList();
     
     public ControlAdministrador(Administrador administrador)  {
         ventana = new VistaAdministrador();
@@ -35,6 +37,7 @@ public class ControlAdministrador implements Controlador{
         this.ventana.BotonGuardar.addActionListener(this);
         this.ventana.BotonEliminar.addActionListener(this);
         this.ventana.botonBuscar.addActionListener(this);
+     
     }
     
     @Override
@@ -46,12 +49,29 @@ public class ControlAdministrador implements Controlador{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(ventana.BotonGuardar==e.getSource()){
+            ventana.botonBuscar.setEnabled(true);
+            DefaultTableModel modeloBusqueda = new DefaultTableModel();
+            modeloBusqueda.addColumn("idProducto");
+            modeloBusqueda.addColumn("Nombre");
+            modeloBusqueda.addColumn("Tipo");
+            modeloBusqueda.addColumn("Marca");
+            modeloBusqueda.addColumn("Precio");
+            for(String[] ob: datos){
+                boolean validacion = false;
+                for(String str: ob){
+                    if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+                }
+                if(validacion) modeloBusqueda.addRow(ob);
+            }
+            TablaUsuario.setModel(modeloBusqueda);
+        }
     }
+    
     void initelements(){
         
-        DefaultTableModel modeloDefault = new DefaultTableModel();
-        LinkedList<String[]> datos = new LinkedList();
+       
         
         modeloDefault.addColumn("idProducto");
         modeloDefault.addColumn("Nombre");
