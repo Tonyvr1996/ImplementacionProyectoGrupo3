@@ -6,8 +6,7 @@
 package Controladores;
 
 import Personal.SuperAdministrador;
-import Vistas.AdministrarUsuarios;
-import Vistas.ConsultarUsuario;
+
 import Vistas.VistaSuperadministrador;
 import java.awt.event.ActionEvent;
 
@@ -19,24 +18,20 @@ public class ControlSuperAdministrador implements Controlador {
     
     private VistaSuperadministrador ventana;
     private SuperAdministrador SuperAdministrador;
-    private ConsultarUsuario consultarUsuario;
-    private AdministrarUsuarios administrarUsuarios;
+ 
     
     
     public ControlSuperAdministrador(SuperAdministrador SuperAdministrador)  {
         ventana = new VistaSuperadministrador();
-        administrarUsuarios=new AdministrarUsuarios();
         this.SuperAdministrador = SuperAdministrador;
         this.SuperAdministrador.setControl(this);
-        this.ventana.AdministrarUsu.addActionListener(this);
         ventana.setVisible(true);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(ventana.AdministrarUsu==e.getSource()){
+        if(ventana.botonBuscar==e.getSource()){
 //            AdministrarUsuarios a=new AdministrarUsuarios();
-            administrarUsuarios.setVisible(true);
             ventana.setVisible(false);
             
 //        }if(administrarUsuarios.consultarUsuario==e.getSource()){
