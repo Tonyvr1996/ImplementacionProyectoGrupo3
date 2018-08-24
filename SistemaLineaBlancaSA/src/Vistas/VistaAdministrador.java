@@ -158,7 +158,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         RadiotextId = new javax.swing.JRadioButton();
         RadiotextDescripcion = new javax.swing.JRadioButton();
         jTextField6 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        botonBuscar2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -458,10 +458,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         RadiotextDescripcion.setText("Descripcion");
 
-        jButton6.setText("Buscar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscar2.setText("Buscar");
+        botonBuscar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                botonBuscar2ActionPerformed(evt);
             }
         });
 
@@ -487,7 +487,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -512,7 +512,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
                     .addComponent(RadiotextId)
                     .addComponent(RadiotextDescripcion)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(botonBuscar2))
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -737,20 +737,20 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario.setModel(modeloBusqueda);
+//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+//        modeloBusqueda.addColumn("idProducto");
+//        modeloBusqueda.addColumn("Nombre");
+//        modeloBusqueda.addColumn("Tipo");
+//        modeloBusqueda.addColumn("Marca");
+//        modeloBusqueda.addColumn("Precio");
+//        for(String[] ob: datos){
+//            boolean validacion = false;
+//            for(String str: ob){
+//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+//            }
+//            if(validacion) modeloBusqueda.addRow(ob);
+//        }
+//        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -855,7 +855,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RadiotextIdActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botonBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscar2ActionPerformed
         // TODO add your handling code here:
 //        DefaultTableModel modeloBusqueda = new DefaultTableModel();
 //        modeloBusqueda.addColumn("idProducto");
@@ -871,7 +871,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 //            if(validacion) modeloBusqueda.addRow(ob);
 //        }
 //        this.TablaUsuario.setModel(modeloBusqueda);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botonBuscar2ActionPerformed
 
     private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
         // TODO add your handling code here:
@@ -981,9 +981,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public static javax.swing.JTable TablaUsuario;
     public static javax.swing.JTable TablaUsuario1;
     public static javax.swing.JButton botonBuscar;
+    public static javax.swing.JButton botonBuscar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    public static javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

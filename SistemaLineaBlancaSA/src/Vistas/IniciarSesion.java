@@ -185,9 +185,8 @@ public class IniciarSesion extends javax.swing.JFrame {
 //              SuperAdministrador a=new SuperAdministrador();
 //              this.setVisible(false);
         }else if(tipo ==2){
-            Persona VA = new Administrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
-            VA.getControl().presentarVista();
-//VA.setVisible(true);
+            Persona A = new Administrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+            A.getControl().presentarVista();
             this.setVisible(false);
         }else if(tipo == 3){
             VistaGerente VG = new VistaGerente();
