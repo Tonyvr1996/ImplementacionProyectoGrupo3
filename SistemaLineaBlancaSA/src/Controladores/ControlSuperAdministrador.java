@@ -142,14 +142,15 @@ public class ControlSuperAdministrador implements Controlador {
             modeloBusqueda.addColumn("Cédula");
             modeloBusqueda.addColumn("Usuario");
             modeloBusqueda.addColumn("Tipo");
-            for(String[] ob: datos){
+            for(String[] ob: datos1){
                 boolean validacion = false;
                 for(String str: ob){
-                    if(str.toLowerCase().contains(this.ventana.jTextField5.getText().toLowerCase())) validacion = true;
+                    if(str.toLowerCase().contains(this.ventana.jTextField6.getText().toLowerCase())) validacion = true;
                 }
                 if(validacion) modeloBusqueda.addRow(ob);
             }
             this.ventana.TablaUsuario.setModel(modeloBusqueda);
+     
         }if(this.ventana.BotonGuardar==e.getSource()){
             String cedula = this.ventana.TextoCedula.getText();
             String nombres = this.ventana.TextoNombre.getText();
@@ -188,7 +189,7 @@ public class ControlSuperAdministrador implements Controlador {
             modeloBusqueda.addColumn("Cédula");
             modeloBusqueda.addColumn("Usuario");
             modeloBusqueda.addColumn("Tipo");
-            for(String[] ob: datos){
+            for(String[] ob: datos1){
                 boolean validacion = false;
                 for(String str: ob){
                     if(str.toLowerCase().contains(this.ventana.jTextField5.getText().toLowerCase())) validacion = true;
@@ -196,6 +197,7 @@ public class ControlSuperAdministrador implements Controlador {
                 if(validacion) modeloBusqueda.addRow(ob);
             }
             this.ventana.TablaUsuario1.setModel(modeloBusqueda);
+            
         }if(this.ventana.BotonGuardar==e.getSource()){
             String cedula = this.ventana.TextoCedula.getText();
             String nombres = this.ventana.TextoNombre.getText();
