@@ -96,7 +96,7 @@ public class ControlAdministrador implements Controlador{
             for(String[] ob: datos){
                 boolean validacion = false;
                 for(String str: ob){
-                    if(str.toLowerCase().contains(jTextField6.getText().toLowerCase())) validacion = true;
+                    if(str.toLowerCase().contains(ventana.jTextField6.getText().toLowerCase())) validacion = true;
                 }
                 if(validacion) modeloBusqueda.addRow(ob);
             }

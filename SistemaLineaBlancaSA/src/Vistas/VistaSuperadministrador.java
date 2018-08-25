@@ -132,7 +132,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        TablaUsuario1 = new javax.swing.JTable();
+        TablaUsuario = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -181,7 +181,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TablaUsuario = new javax.swing.JTable();
+        TablaUsuario1 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         RadioBotonNombre = new javax.swing.JRadioButton();
         RadioBotonApellido = new javax.swing.JRadioButton();
@@ -196,7 +196,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TablaUsuario1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -204,7 +204,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(TablaUsuario1);
+        jScrollPane3.setViewportView(TablaUsuario);
 
         jLabel5.setText("Nombre");
 
@@ -638,7 +638,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear Usuario", jPanel1);
 
-        TablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        TablaUsuario1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -646,7 +646,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(TablaUsuario);
+        jScrollPane2.setViewportView(TablaUsuario1);
 
         jLabel11.setText("Buscar Usuario Por:");
 

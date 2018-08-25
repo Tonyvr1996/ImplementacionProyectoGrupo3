@@ -9,8 +9,6 @@ import Persona.SuperAdministrador;
 import Vistas.IniciarSesion;
 
 import Vistas.VistaSuperadministrador;
-import static Vistas.VistaSuperadministrador.TablaUsuario;
-import static Vistas.VistaSuperadministrador.TablaUsuario1;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +20,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import static Vistas.VistaSuperadministrador.TablaUsuario;
+import static Vistas.VistaSuperadministrador.TablaUsuario1;
 
 /**
  *
@@ -35,7 +35,6 @@ public class ControlSuperAdministrador implements Controlador {
     private LinkedList<String[]> datos = new LinkedList();
     private DefaultTableModel modeloDefault1 = new DefaultTableModel();
     private LinkedList<String[]> datos1 = new LinkedList();
-    private DefaultTableModel modeloBusqueda = new DefaultTableModel();
     
     
     public ControlSuperAdministrador(SuperAdministrador SuperAdministrador)  {
@@ -117,7 +116,7 @@ public class ControlSuperAdministrador implements Controlador {
                             modeloDefault.setColumnCount(0); 
                             datos.clear();
                             datos1.clear();
-                            actualizarTablaUsuario();
+                            //actualizarTablaUsuario();
                             actualizarTablaUsuario1();
                             
                             JOptionPane.showMessageDialog(null, "Usuario eliminado de la base de datos");
@@ -135,7 +134,8 @@ public class ControlSuperAdministrador implements Controlador {
                 }
             }
         }if(this.ventana.botonBuscar==e.getSource()){
-//            DefaultTableModel modeloBusqueda = new DefaultTableModel();
+            DefaultTableModel modeloBusqueda = new DefaultTableModel();
+
             modeloBusqueda.addColumn("idUusario");
             modeloBusqueda.addColumn("Nombres");
             modeloBusqueda.addColumn("Apellidos");
@@ -149,7 +149,7 @@ public class ControlSuperAdministrador implements Controlador {
                 }
                 if(validacion) modeloBusqueda.addRow(ob);
             }
-            this.ventana.TablaUsuario1.setModel(modeloBusqueda);
+            this.ventana.TablaUsuario.setModel(modeloBusqueda);
         }if(this.ventana.BotonGuardar==e.getSource()){
             String cedula = this.ventana.TextoCedula.getText();
             String nombres = this.ventana.TextoNombre.getText();
@@ -195,7 +195,7 @@ public class ControlSuperAdministrador implements Controlador {
                 }
                 if(validacion) modeloBusqueda.addRow(ob);
             }
-            this.ventana.TablaUsuario.setModel(modeloBusqueda);
+            this.ventana.TablaUsuario1.setModel(modeloBusqueda);
         }if(this.ventana.BotonGuardar==e.getSource()){
             String cedula = this.ventana.TextoCedula.getText();
             String nombres = this.ventana.TextoNombre.getText();
@@ -244,41 +244,41 @@ public class ControlSuperAdministrador implements Controlador {
         initelements();
     }
 
-    void actualizarTablaUsuario(){
-        modeloDefault.addColumn("idUsuario");
-        modeloDefault.addColumn("Nombres");
-        modeloDefault.addColumn("Apellidos");
-        modeloDefault.addColumn("Cédula");
-        modeloDefault.addColumn("Usuario");
-        modeloDefault.addColumn("Tipo");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
-            //ResultSet rs2 = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
-            while (rs.next()) {
-                int tipo = 0;
-                String[] dato = new String[6];
-                dato[0] = rs.getString("idUsuario");
-                dato[1] = rs.getString("Nombres");
-                dato[2] = rs.getString("Apellidos");
-                dato[3] = rs.getString("Cedula");
-                dato[4] = rs.getString("Usuario");
-                tipo = rs.getInt("idTipo");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[5] = nombre;
-                }
-                datos.add(dato);
-                modeloDefault.addRow(dato);
-            }
-            this.ventana.TablaUsuario.setModel(modeloDefault);
-            //TablaUsuario1.setModel(modeloDefault);
-        } catch (SQLException ex) {
-//            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    void actualizarTablaUsuario(){
+//        modeloDefault.addColumn("idUsuario");
+//        modeloDefault.addColumn("Nombres");
+//        modeloDefault.addColumn("Apellidos");
+//        modeloDefault.addColumn("Cédula");
+//        modeloDefault.addColumn("Usuario");
+//        modeloDefault.addColumn("Tipo");
+//        try {
+//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
+//            //ResultSet rs2 = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
+//            while (rs.next()) {
+//                int tipo = 0;
+//                String[] dato = new String[6];
+//                dato[0] = rs.getString("idUsuario");
+//                dato[1] = rs.getString("Nombres");
+//                dato[2] = rs.getString("Apellidos");
+//                dato[3] = rs.getString("Cedula");
+//                dato[4] = rs.getString("Usuario");
+//                tipo = rs.getInt("idTipo");
+//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
+//                while(rs1.next()){
+//                    String nombre = rs1.getString("Nombre");
+//                    dato[5] = nombre;
+//                }
+//                datos.add(dato);
+//                modeloDefault.addRow(dato);
+//            }
+//            this.ventana.TablaUsuario.setModel(modeloDefault);
+//            //TablaUsuario1.setModel(modeloDefault);
+//        } catch (SQLException ex) {
+////            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
     void actualizarTablaUsuario1(){
         //JOptionPane.showMessageDialog(null, "Para eliminar un usuario tiene que ingresar sólo el id");
@@ -310,6 +310,7 @@ public class ControlSuperAdministrador implements Controlador {
                 modeloDefault1.addRow(dato);
             }
             this.ventana.TablaUsuario1.setModel(modeloDefault1);
+            this.ventana.TablaUsuario.setModel(modeloDefault1);
         } catch (SQLException ex) {
             Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -317,7 +318,7 @@ public class ControlSuperAdministrador implements Controlador {
     
     
     void initelements(){ 
-        actualizarTablaUsuario();
+        //actualizarTablaUsuario();
         actualizarTablaUsuario1();
 //        modeloDefault.addColumn("idUsuario");
 //        modeloDefault.addColumn("Nombres");
