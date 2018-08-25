@@ -3,8 +3,10 @@ package Vistas;
 
 import Conexion.Conexion;
 import Persona.Administrador;
+import Persona.Gerente;
 import Persona.Persona;
 import Persona.SuperAdministrador;
+import Persona.Vendedor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -192,13 +194,16 @@ public class IniciarSesion extends javax.swing.JFrame {
             A.getControl().presentarVista();
             this.setVisible(false);
         }else if(tipo == 3){
-            VistaGerente VG = new VistaGerente();
-            VG.setVisible(true);
+            Persona A = new Gerente(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+            A.getControl().presentarVista();
             this.setVisible(false);
+//            VG.setVisible(true);
+//            this.setVisible(false);
         }else if(tipo == 4){
-            VistaVendedor VV = new VistaVendedor();
-            VV.setVisible(true);
+            Persona A = new Vendedor(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+            A.getControl().presentarVista();
             this.setVisible(false);
+            
         }else{
             JOptionPane.showMessageDialog(null, "Ocurrió un error. Ingrese nuevamente los datos");
         }}

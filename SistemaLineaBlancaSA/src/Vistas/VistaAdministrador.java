@@ -22,93 +22,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaAdministrador extends javax.swing.JFrame {
 
-    //private DefaultTableModel modeloDefault = new DefaultTableModel();
-//    private LinkedList<String[]> datos = new LinkedList();
-//    
-//    private DefaultTableModel modeloDefault1 = new DefaultTableModel();
-//    private LinkedList<String[]> datos1 = new LinkedList();
-    /**
-     * Creates new form Vista
-     */
     public VistaAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
-//        modeloDefault.addColumn("idProducto");
-//        modeloDefault.addColumn("Nombre");
-//        modeloDefault.addColumn("Tipo");
-//        modeloDefault.addColumn("Marca");
-//        modeloDefault.addColumn("Precio");
-//        try {
-//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
-//            while (rs.next()) {
-//                int tipo;
-//                int marca;
-//                String[] dato = new String[5];
-//                dato[0] = rs.getString("idArticulo");
-//                dato[1] = rs.getString("NombreModelo");
-//                dato[4] = String.valueOf(rs.getFloat("Precio"));
-//                tipo = rs.getInt("idTipoArticulo");
-//                marca = rs.getInt("idMarca");
-//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
-//                while(rs1.next()){
-//                    String nombre = rs1.getString("Nombre");
-//                    dato[2] = nombre;
-//                }
-//                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
-//                while(rs2.next()){
-//                    String nombre = rs2.getString("Nombre");
-//                    dato[3] = nombre;
-//                }
-//                datos.add(dato);
-//                modeloDefault.addRow(dato);
-//            }
-//            TablaUsuario.setModel(modeloDefault);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-        
-        //JOptionPane.showMessageDialog(null, "Para eliminar un producto sólo necesita ingresar el id del mismo");
-//        modeloDefault1.addColumn("idProducto");
-//        modeloDefault1.addColumn("Nombre");
-//        modeloDefault1.addColumn("Tipo");
-//        modeloDefault1.addColumn("Marca");
-//        modeloDefault1.addColumn("Precio");
-//        try {
-//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos WHERE eliminado = false");
-//            while (rs.next()) {
-//                int tipo;
-//                int marca;
-//                String[] dato = new String[5];
-//                dato[0] = rs.getString("idArticulo");
-//                dato[1] = rs.getString("NombreModelo");
-//                dato[4] = String.valueOf(rs.getFloat("Precio"));
-//                tipo = rs.getInt("idTipoArticulo");
-//                marca = rs.getInt("idMarca");
-//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
-//                while(rs1.next()){
-//                    String nombre = rs1.getString("Nombre");
-//                    dato[2] = nombre;
-//                }
-//                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
-//                while(rs2.next()){
-//                    String nombre = rs2.getString("Nombre");
-//                    dato[3] = nombre;
-//                }
-//                datos1.add(dato);
-//                modeloDefault1.addRow(dato);
-//            }
-//            TablaUsuario1.setModel(modeloDefault1);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
     }
 
     /**
@@ -519,7 +435,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonBuscar2))
                 .addGap(4, 4, 4)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -742,27 +659,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-//        modeloBusqueda.addColumn("idProducto");
-//        modeloBusqueda.addColumn("Nombre");
-//        modeloBusqueda.addColumn("Tipo");
-//        modeloBusqueda.addColumn("Marca");
-//        modeloBusqueda.addColumn("Precio");
-//        for(String[] ob: datos){
-//            boolean validacion = false;
-//            for(String str: ob){
-//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-//            }
-//            if(validacion) modeloBusqueda.addRow(ob);
-//        }
-//        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        AdministrarProductosSuperAdmi ap = new AdministrarProductosSuperAdmi();
-//        this.setVisible(false);
-//        ap.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -779,77 +679,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
-//        int id = Integer.parseInt(txtId.getText());
-//        if(estaVacio(txtId)){
-//            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
-//        }
-//        else{
-//            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
-//            try{
-//                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs = stm.executeQuery(query1);
-//                String idusuario;
-//                while(rs.next()){
-//                    int idart = rs.getInt("idArticulo");
-//                    String query2 = "UPDATE Articulos SET eliminado = true WHERE idArticulo="+idart+";";
-//                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-//                    int n = ps.executeUpdate();
-//                    if(n > 0){
-//                        VistaAdministrador vs = new VistaAdministrador();
-//                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
-//                        this.setVisible(false);
-//                        vs.setVisible(true);
-//                    }
-//                    else{
-//                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
-//                    }
-//                }
-//
-//            }catch (SQLException ex) {
-//                Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         // TODO add your handling code here:
-//        String nombre = txtNombre.getText();
-//        float precio = Float.parseFloat(txtPrecio.getText());
-//        int id = Integer.parseInt(txtId.getText());
-//        int tipo = jComboBox1.getSelectedIndex()+1;
-//        int marca = jComboBox2.getSelectedIndex()+1;
-//        if(estaVacio(txtNombre) || estaVacio(txtPrecio) || estaVacio(txtId)){
-//            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
-//        }else {
-//            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
-//            try{
-//                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs = stm.executeQuery(query1);
-//                String idusuario;
-//                while(rs.next()){
-//                    int idart = rs.getInt("idArticulo");
-//                    String query2 = "UPDATE Articulos SET NombreModelo = ? , idTipoArticulo = ? , idMarca = ? , Precio = ? WHERE idArticulo="+idart+";";
-//                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-//                    ps.setString(1,nombre);
-//                    ps.setInt(2,tipo);
-//                    ps.setInt(3,marca);
-//                    ps.setFloat(4,precio);
-//                    int n = ps.executeUpdate();
-//                    if(n > 0){
-//                        VistaSuperadministrador vs = new VistaSuperadministrador();
-//                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
-//                        this.setVisible(false);
-//                        vs.setVisible(true);
-//                    }
-//                    else{
-//                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
-//                    }
-//                }
-//
-//            }catch (SQLException ex) {
-//                Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }//GEN-LAST:event_EditarActionPerformed
 
     private void RadioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonNombreActionPerformed
@@ -862,20 +695,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void botonBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscar2ActionPerformed
         // TODO add your handling code here:
-//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-//        modeloBusqueda.addColumn("idProducto");
-//        modeloBusqueda.addColumn("Nombre");
-//        modeloBusqueda.addColumn("Tipo");
-//        modeloBusqueda.addColumn("Marca");
-//        modeloBusqueda.addColumn("Precio");
-//        for(String[] ob: datos){
-//            boolean validacion = false;
-//            for(String str: ob){
-//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-//            }
-//            if(validacion) modeloBusqueda.addRow(ob);
-//        }
-//        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_botonBuscar2ActionPerformed
 
     private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
@@ -888,39 +707,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         // TODO add your handling code here:
-//        if(estaVacio(txtNombre1) || estaVacio(txtPrecio1)){
-//        JOptionPane.showMessageDialog(null,"Existen campos vacíos. Ingrese todos los datos");
-//        }else{
-//            String nombre = txtNombre1.getText();
-//            int tipo = jComboBox1.getSelectedIndex()+1;
-//            int marca = jComboBox2.getSelectedIndex()+1;
-//            float precio = Float.parseFloat(txtPrecio1.getText());
-//            String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
-//            try{
-//                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
-//                int n = ps.executeUpdate();
-//                VistaAdministrador ap = new VistaAdministrador();
-//                if(n>0){
-//                    JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
-//                    this.setVisible(false);
-//                    ap.setVisible(true);
-//                }
-//                else{
-//                    JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
-//                }
-//            }catch(SQLException e){
-//                JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
-//            }
-//        }
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-//        this.hide();
-//        IniciarSesion s=IniciarSesion.getInstancia();
-//        this.setVisible(false);
-//        s.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed

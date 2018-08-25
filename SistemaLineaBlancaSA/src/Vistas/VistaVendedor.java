@@ -39,43 +39,10 @@ public class VistaVendedor extends javax.swing.JFrame {
     /**
      * Creates new form VistaSuperadministrador
      */
-    
-    private DefaultTableModel modeloDefault = new DefaultTableModel();
-    private LinkedList<String[]> datos = new LinkedList();
     public VistaVendedor() {
         initComponents();
         this.setLocationRelativeTo(null);
-        modeloDefault.addColumn("idUsuario");
-        modeloDefault.addColumn("Nombres");
-        modeloDefault.addColumn("Apellidos");
-        modeloDefault.addColumn("Cédula");
-        modeloDefault.addColumn("Usuario");
-        modeloDefault.addColumn("Tipo");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
-            while (rs.next()) {
-                int tipo = 0;
-                String[] dato = new String[6];
-                dato[0] = rs.getString("idUsuario");
-                dato[1] = rs.getString("Nombres");
-                dato[2] = rs.getString("Apellidos");
-                dato[3] = rs.getString("Cedula");
-                dato[4] = rs.getString("Usuario");
-                tipo = rs.getInt("idTipo");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[5] = nombre;
-                }
-                datos.add(dato);
-                modeloDefault.addRow(dato);
-            }
-            TablaUsuario.setModel(modeloDefault);
-        } catch (SQLException ex) {
-//            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
     }
 
@@ -92,7 +59,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        TablaUsuario2 = new javax.swing.JTable();
+        TablaUsuario1 = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -113,8 +80,8 @@ public class VistaVendedor extends javax.swing.JFrame {
         BotonTipo1 = new javax.swing.JRadioButton();
         RadiotextId = new javax.swing.JRadioButton();
         RadiotextDescripcion = new javax.swing.JRadioButton();
-        jTextField7 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
+        botonBuscar2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -145,7 +112,7 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TablaUsuario2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaUsuario1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -153,7 +120,7 @@ public class VistaVendedor extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane4.setViewportView(TablaUsuario2);
+        jScrollPane4.setViewportView(TablaUsuario1);
 
         jLabel19.setText("Tipo");
 
@@ -299,10 +266,10 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         RadiotextDescripcion.setText("Descripcion");
 
-        jButton6.setText("Buscar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscar2.setText("Buscar");
+        botonBuscar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                botonBuscar2ActionPerformed(evt);
             }
         });
 
@@ -326,9 +293,9 @@ public class VistaVendedor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(RadiotextDescripcion)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -352,8 +319,8 @@ public class VistaVendedor extends javax.swing.JFrame {
                     .addComponent(BotonTipo1)
                     .addComponent(RadiotextId)
                     .addComponent(RadiotextDescripcion)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonBuscar2))
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -435,6 +402,11 @@ public class VistaVendedor extends javax.swing.JFrame {
         });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Linea Blanca" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indurama", "Durex", "Mabe" }));
 
@@ -692,77 +664,10 @@ public class VistaVendedor extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
-        int id = Integer.parseInt(txtId.getText());
-        if(estaVacio(txtId)){
-            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
-        }
-        else{
-            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
-            try{
-                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs = stm.executeQuery(query1);
-                String idusuario;
-                while(rs.next()){
-                    int idart = rs.getInt("idArticulo");
-                    String query2 = "UPDATE Articulos SET eliminado = true WHERE idArticulo="+idart+";";
-                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-                    int n = ps.executeUpdate();
-                    if(n > 0){
-                        VistaSuperadministrador vs = new VistaSuperadministrador();
-                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
-                        this.setVisible(false);
-                        vs.setVisible(true);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
-                    }
-                }
-
-            }catch (SQLException ex) {
-                //Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtNombre.getText();
-        float precio = Float.parseFloat(txtPrecio.getText());
-        int id = Integer.parseInt(txtId.getText());
-        int tipo = jComboBox1.getSelectedIndex()+1;
-        int marca = jComboBox2.getSelectedIndex()+1;
-        if(estaVacio(txtNombre) || estaVacio(txtPrecio) || estaVacio(txtId)){
-            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
-        }else {
-            String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
-            try{
-                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs = stm.executeQuery(query1);
-                String idusuario;
-                while(rs.next()){
-                    int idart = rs.getInt("idArticulo");
-                    String query2 = "UPDATE Articulos SET NombreModelo = ? , idTipoArticulo = ? , idMarca = ? , Precio = ? WHERE idArticulo="+idart+";";
-                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-                    ps.setString(1,nombre);
-                    ps.setInt(2,tipo);
-                    ps.setInt(3,marca);
-                    ps.setFloat(4,precio);
-                    int n = ps.executeUpdate();
-                    if(n > 0){
-                        VistaSuperadministrador vs = new VistaSuperadministrador();
-                        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
-                        this.setVisible(false);
-                        vs.setVisible(true);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
-                    }
-                }
-
-            }catch (SQLException ex) {
-                Logger.getLogger(VistaVendedor.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }//GEN-LAST:event_EditarActionPerformed
 
     private void RadioBotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonNombreActionPerformed
@@ -773,23 +678,9 @@ public class VistaVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RadiotextIdActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botonBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscar2ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario.setModel(modeloBusqueda);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botonBuscar2ActionPerformed
 
     private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
         // TODO add your handling code here:
@@ -801,30 +692,6 @@ public class VistaVendedor extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         // TODO add your handling code here:
-        if(estaVacio(txtNombre) || estaVacio(txtPrecio))
-        JOptionPane.showMessageDialog(null,"Existen campos vacíos. Ingrese todos los datos");
-        else{
-            String nombre = txtNombre.getText();
-            int tipo = jComboBox1.getSelectedIndex()+1;
-            int marca = jComboBox2.getSelectedIndex()+1;
-            float precio = Float.parseFloat(txtPrecio.getText());
-            String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
-            try{
-                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
-                int n = ps.executeUpdate();
-                //AdministrarProductosSuperAdmi ap = new AdministrarProductosSuperAdmi();
-                if(n>0){
-                    JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
-                    //this.setVisible(false);
-                    //ap.setVisible(true);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
-                }
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
-            }
-        }
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNombreActionPerformed
@@ -845,36 +712,19 @@ public class VistaVendedor extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        AdministrarProductosSuperAdmi ap = new AdministrarProductosSuperAdmi();
-//        this.setVisible(false);
-//        ap.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        IniciarSesion s=IniciarSesion.getInstancia();
-        this.setVisible(false);
-        s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     
     
@@ -1186,13 +1036,13 @@ public class VistaVendedor extends javax.swing.JFrame {
     public static javax.swing.JRadioButton RadiotextDescripcion;
     public static javax.swing.JRadioButton RadiotextId;
     public static javax.swing.JTable TablaUsuario;
-    public static javax.swing.JTable TablaUsuario2;
+    public static javax.swing.JTable TablaUsuario1;
     public static javax.swing.JButton botonBuscar;
+    public static javax.swing.JButton botonBuscar2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    public static javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public static javax.swing.JButton jButton2;
+    public static javax.swing.JComboBox<String> jComboBox1;
+    public static javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel10;
@@ -1222,8 +1072,8 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     public static javax.swing.JTextField jTextField5;
-    public static javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField txtId;
+    public static javax.swing.JTextField jTextField6;
+    public static javax.swing.JTextField txtId;
     public static javax.swing.JTextField txtNombre;
     public static javax.swing.JTextField txtNombre1;
     public static javax.swing.JTextField txtPrecio;

@@ -40,43 +40,10 @@ public class VistaGerente extends javax.swing.JFrame {
      * Creates new form VistaSuperadministrador
      */
     
-    private DefaultTableModel modeloDefault = new DefaultTableModel();
-    private LinkedList<String[]> datos = new LinkedList();
+    
     public VistaGerente() {
         initComponents();
         this.setLocationRelativeTo(null);
-        modeloDefault.addColumn("idUsuario");
-        modeloDefault.addColumn("Nombres");
-        modeloDefault.addColumn("Apellidos");
-        modeloDefault.addColumn("Cédula");
-        modeloDefault.addColumn("Usuario");
-        modeloDefault.addColumn("Tipo");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
-            while (rs.next()) {
-                int tipo = 0;
-                String[] dato = new String[6];
-                dato[0] = rs.getString("idUsuario");
-                dato[1] = rs.getString("Nombres");
-                dato[2] = rs.getString("Apellidos");
-                dato[3] = rs.getString("Cedula");
-                dato[4] = rs.getString("Usuario");
-                tipo = rs.getInt("idTipo");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[5] = nombre;
-                }
-                datos.add(dato);
-                modeloDefault.addRow(dato);
-            }
-            __resultadoTabla.setModel(modeloDefault);
-        } catch (SQLException ex) {
-//            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     /**
@@ -94,11 +61,11 @@ public class VistaGerente extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buscarNombre = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        buscarCategori = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         __resultadoTabla = new javax.swing.JTable();
@@ -118,10 +85,10 @@ public class VistaGerente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscarNombre.setText("Buscar");
+        buscarNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarNombreActionPerformed(evt);
             }
         });
 
@@ -136,7 +103,7 @@ public class VistaGerente extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton1))
+                        .addComponent(buscarNombre))
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -148,7 +115,7 @@ public class VistaGerente extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(buscarNombre)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -160,10 +127,10 @@ public class VistaGerente extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarCategori.setText("Buscar");
+        buscarCategori.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarCategoriActionPerformed(evt);
             }
         });
 
@@ -175,7 +142,7 @@ public class VistaGerente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(buscarCategori)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 13, Short.MAX_VALUE))
         );
@@ -187,7 +154,7 @@ public class VistaGerente extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(buscarCategori)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -312,56 +279,22 @@ public class VistaGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarNombreActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField1.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.__resultadoTabla.setModel(modeloBusqueda);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buscarNombreActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarCategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCategoriActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idProducto");
-        modeloBusqueda.addColumn("Nombre");
-        modeloBusqueda.addColumn("Tipo");
-        modeloBusqueda.addColumn("Marca");
-        modeloBusqueda.addColumn("Precio");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField2.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.__resultadoTabla.setModel(modeloBusqueda);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarCategoriActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        IniciarSesion s=IniciarSesion.getInstancia();
-        this.setVisible(false);
-        s.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    
-    
+  
     public boolean estaVacio(JTextField campo){
         if(campo.getText().equals("")) return true;
         return false;
@@ -407,9 +340,9 @@ public class VistaGerente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable __resultadoTabla;
     public javax.swing.JTextArea __resultadoTexto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    public static javax.swing.JButton buscarCategori;
+    public static javax.swing.JButton buscarNombre;
+    public static javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -420,7 +353,7 @@ public class VistaGerente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,5 +26,6 @@ public class Sistema {
                 login.setVisible(true);
             }
         });
+        
     }
 }
