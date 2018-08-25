@@ -179,9 +179,12 @@ public class IniciarSesion extends javax.swing.JFrame {
             
          
         if(tipo == 1){
-            VistaSuperadministrador VS = new VistaSuperadministrador();
-            VS.setVisible(true);
+            Persona A=new SuperAdministrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+            A.getControl().presentarVista();
             this.setVisible(false);
+//            VistaSuperadministrador VS = new VistaSuperadministrador();
+//            VS.setVisible(true);
+//            this.setVisible(false);
 //              SuperAdministrador a=new SuperAdministrador();
 //              this.setVisible(false);
         }else if(tipo ==2){
@@ -364,4 +367,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPasword;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public void setTxtPasword(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

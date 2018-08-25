@@ -23,10 +23,10 @@ import javax.swing.table.DefaultTableModel;
 public class VistaAdministrador extends javax.swing.JFrame {
 
     //private DefaultTableModel modeloDefault = new DefaultTableModel();
-    private LinkedList<String[]> datos = new LinkedList();
-    
-    private DefaultTableModel modeloDefault1 = new DefaultTableModel();
-    private LinkedList<String[]> datos1 = new LinkedList();
+//    private LinkedList<String[]> datos = new LinkedList();
+//    
+//    private DefaultTableModel modeloDefault1 = new DefaultTableModel();
+//    private LinkedList<String[]> datos1 = new LinkedList();
     /**
      * Creates new form Vista
      */
@@ -69,7 +69,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-//        
+        
         
         //JOptionPane.showMessageDialog(null, "Para eliminar un producto sólo necesita ingresar el id del mismo");
 //        modeloDefault1.addColumn("idProducto");
@@ -917,10 +917,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        this.hide();
-        IniciarSesion s=IniciarSesion.getInstancia();
-        this.setVisible(false);
-        s.setVisible(true);
+//        this.hide();
+//        IniciarSesion s=IniciarSesion.getInstancia();
+//        this.setVisible(false);
+//        s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -992,7 +992,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public static javax.swing.JButton botonBuscar;
     public static javax.swing.JButton botonBuscar2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton2;
     public static javax.swing.JComboBox<String> jComboBox1;
     public static javax.swing.JComboBox<String> jComboBox2;
     public static javax.swing.JComboBox<String> jComboBox3;

@@ -40,81 +40,81 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
      * Creates new form VistaSuperadministrador
      */
     
-    private DefaultTableModel modeloDefault = new DefaultTableModel();
-    private LinkedList<String[]> datos = new LinkedList();
-    
-    private DefaultTableModel modeloDefault1 = new DefaultTableModel();
-    private LinkedList<String[]> datos1 = new LinkedList();
+//    private DefaultTableModel modeloDefault = new DefaultTableModel();
+//    private LinkedList<String[]> datos = new LinkedList();
+//    
+//    private DefaultTableModel modeloDefault1 = new DefaultTableModel();
+//    private LinkedList<String[]> datos1 = new LinkedList();
     public VistaSuperadministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
-        modeloDefault.addColumn("idUsuario");
-        modeloDefault.addColumn("Nombres");
-        modeloDefault.addColumn("Apellidos");
-        modeloDefault.addColumn("Cédula");
-        modeloDefault.addColumn("Usuario");
-        modeloDefault.addColumn("Tipo");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
-            //ResultSet rs2 = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
-            while (rs.next()) {
-                int tipo = 0;
-                String[] dato = new String[6];
-                dato[0] = rs.getString("idUsuario");
-                dato[1] = rs.getString("Nombres");
-                dato[2] = rs.getString("Apellidos");
-                dato[3] = rs.getString("Cedula");
-                dato[4] = rs.getString("Usuario");
-                tipo = rs.getInt("idTipo");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[5] = nombre;
-                }
-                datos.add(dato);
-                modeloDefault.addRow(dato);
-            }
-            TablaUsuario.setModel(modeloDefault);
-            //TablaUsuario1.setModel(modeloDefault);
-        } catch (SQLException ex) {
-//            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        JOptionPane.showMessageDialog(null, "Para eliminar un usuario tiene que ingresar sólo el id");
-        modeloDefault1.addColumn("idUsuario");
-        modeloDefault1.addColumn("Nombres");
-        modeloDefault1.addColumn("Apellidos");
-        modeloDefault1.addColumn("Cédula");
-        modeloDefault1.addColumn("Usuario");
-        modeloDefault1.addColumn("Tipo");
-        try {
-            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
-            while (rs.next()) {
-                int tipo = 0;
-                String[] dato = new String[6];
-                dato[0] = rs.getString("idUsuario");
-                dato[1] = rs.getString("Nombres");
-                dato[2] = rs.getString("Apellidos");
-                dato[3] = rs.getString("Cedula");
-                dato[4] = rs.getString("Usuario");
-                tipo = rs.getInt("idTipo");
-                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
-                while(rs1.next()){
-                    String nombre = rs1.getString("Nombre");
-                    dato[5] = nombre;
-                }
-                datos1.add(dato);
-                modeloDefault1.addRow(dato);
-            }
-            TablaUsuario1.setModel(modeloDefault1);
-        } catch (SQLException ex) {
-            Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        modeloDefault.addColumn("idUsuario");
+//        modeloDefault.addColumn("Nombres");
+//        modeloDefault.addColumn("Apellidos");
+//        modeloDefault.addColumn("Cédula");
+//        modeloDefault.addColumn("Usuario");
+//        modeloDefault.addColumn("Tipo");
+//        try {
+//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios");
+//            //ResultSet rs2 = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
+//            while (rs.next()) {
+//                int tipo = 0;
+//                String[] dato = new String[6];
+//                dato[0] = rs.getString("idUsuario");
+//                dato[1] = rs.getString("Nombres");
+//                dato[2] = rs.getString("Apellidos");
+//                dato[3] = rs.getString("Cedula");
+//                dato[4] = rs.getString("Usuario");
+//                tipo = rs.getInt("idTipo");
+//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
+//                while(rs1.next()){
+//                    String nombre = rs1.getString("Nombre");
+//                    dato[5] = nombre;
+//                }
+//                datos.add(dato);
+//                modeloDefault.addRow(dato);
+//            }
+//            TablaUsuario.setModel(modeloDefault);
+//            //TablaUsuario1.setModel(modeloDefault);
+//        } catch (SQLException ex) {
+////            Logger.getLogger(ConsultarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        
+//        JOptionPane.showMessageDialog(null, "Para eliminar un usuario tiene que ingresar sólo el id");
+//        modeloDefault1.addColumn("idUsuario");
+//        modeloDefault1.addColumn("Nombres");
+//        modeloDefault1.addColumn("Apellidos");
+//        modeloDefault1.addColumn("Cédula");
+//        modeloDefault1.addColumn("Usuario");
+//        modeloDefault1.addColumn("Tipo");
+//        try {
+//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//            ResultSet rs = stm.executeQuery("SELECT * FROM Usuarios where eliminado = false");
+//            while (rs.next()) {
+//                int tipo = 0;
+//                String[] dato = new String[6];
+//                dato[0] = rs.getString("idUsuario");
+//                dato[1] = rs.getString("Nombres");
+//                dato[2] = rs.getString("Apellidos");
+//                dato[3] = rs.getString("Cedula");
+//                dato[4] = rs.getString("Usuario");
+//                tipo = rs.getInt("idTipo");
+//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoUsuario u WHERE u.idTipo="+tipo+";");
+//                while(rs1.next()){
+//                    String nombre = rs1.getString("Nombre");
+//                    dato[5] = nombre;
+//                }
+//                datos1.add(dato);
+//                modeloDefault1.addRow(dato);
+//            }
+//            TablaUsuario1.setModel(modeloDefault1);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }
 
@@ -774,21 +774,21 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idUusario");
-        modeloBusqueda.addColumn("Nombres");
-        modeloBusqueda.addColumn("Apellidos");
-        modeloBusqueda.addColumn("Cédula");
-        modeloBusqueda.addColumn("Usuario");
-        modeloBusqueda.addColumn("Tipo");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario.setModel(modeloBusqueda);
+//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+//        modeloBusqueda.addColumn("idUusario");
+//        modeloBusqueda.addColumn("Nombres");
+//        modeloBusqueda.addColumn("Apellidos");
+//        modeloBusqueda.addColumn("Cédula");
+//        modeloBusqueda.addColumn("Usuario");
+//        modeloBusqueda.addColumn("Tipo");
+//        for(String[] ob: datos){
+//            boolean validacion = false;
+//            for(String str: ob){
+//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+//            }
+//            if(validacion) modeloBusqueda.addRow(ob);
+//        }
+//        this.TablaUsuario.setModel(modeloBusqueda);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void RadioBotonEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBotonEdadActionPerformed
@@ -801,35 +801,35 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         // TODO add your handling code here:
-        String cedula = TextoCedula.getText();
-        String nombres = TextoNombre.getText();
-        String apellidos = TextoApellido.getText();
-        String usuario = TextoUsuario.getText();
-        String contrasenia = TextoContraseña.getText();
-        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
-        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
-            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
-        } else if(cedula.length()!=10){
-            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
-        }else {
-            String query = "INSERT INTO Usuarios(Nombres,Apellidos,Cedula,Usuario,Contraseña,idTipo) VALUES (?,?,?,?,?,?)";
-            try{
-                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
-                ps.setString(1,nombres);
-                ps.setString(2,apellidos);
-                ps.setString(3,cedula);
-                ps.setString(4,usuario);
-                ps.setString(5,contrasenia);
-                ps.setInt(6,tipo);
-                ps.executeUpdate();
-                VistaSuperadministrador vs = new VistaSuperadministrador();
-                JOptionPane.showMessageDialog(null, "Usuario ingresado correctamente");
-                this.setVisible(false);
-                vs.setVisible(true);
-            }catch (SQLException ex) {
-                Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        String cedula = TextoCedula.getText();
+//        String nombres = TextoNombre.getText();
+//        String apellidos = TextoApellido.getText();
+//        String usuario = TextoUsuario.getText();
+//        String contrasenia = TextoContraseña.getText();
+//        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
+//        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
+//            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+//        } else if(cedula.length()!=10){
+//            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
+//        }else {
+//            String query = "INSERT INTO Usuarios(Nombres,Apellidos,Cedula,Usuario,Contraseña,idTipo) VALUES (?,?,?,?,?,?)";
+//            try{
+//                PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+//                ps.setString(1,nombres);
+//                ps.setString(2,apellidos);
+//                ps.setString(3,cedula);
+//                ps.setString(4,usuario);
+//                ps.setString(5,contrasenia);
+//                ps.setInt(6,tipo);
+//                ps.executeUpdate();
+//                VistaSuperadministrador vs = new VistaSuperadministrador();
+//                JOptionPane.showMessageDialog(null, "Usuario ingresado correctamente");
+//                this.setVisible(false);
+//                vs.setVisible(true);
+//            }catch (SQLException ex) {
+//                Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void Funciones_o_CargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Funciones_o_CargosActionPerformed
@@ -878,103 +878,103 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         // TODO add your handling code here:
-        String id = TextoId.getText();
-        if(estaVacio(TextoId)){
-            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
-        }else {
-            String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
-            try{
-                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs = stm.executeQuery(query1);
-                while(rs.next()){
-                    int idus = rs.getInt("idUsuario");
-                    String query2 = "UPDATE Usuarios SET eliminado = true WHERE idUsuario="+idus+";";
-                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-                    int n = ps.executeUpdate();
-                    VistaSuperadministrador vs = new VistaSuperadministrador();
-                    if(n>0){
-                        JOptionPane.showMessageDialog(null, "Usuario eliminado de la base de datos");
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Ocurrió un error");
-                    }
-                    this.setVisible(false);
-                    vs.setVisible(true);
-                }
-                
-            }catch (SQLException ex) {
-                Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        String id = TextoId.getText();
+//        if(estaVacio(TextoId)){
+//            JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
+//        }else {
+//            String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
+//            try{
+//                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs = stm.executeQuery(query1);
+//                while(rs.next()){
+//                    int idus = rs.getInt("idUsuario");
+//                    String query2 = "UPDATE Usuarios SET eliminado = true WHERE idUsuario="+idus+";";
+//                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+//                    int n = ps.executeUpdate();
+//                    VistaSuperadministrador vs = new VistaSuperadministrador();
+//                    if(n>0){
+//                        JOptionPane.showMessageDialog(null, "Usuario eliminado de la base de datos");
+//                    }
+//                    else{
+//                        JOptionPane.showMessageDialog(null, "Ocurrió un error");
+//                    }
+//                    this.setVisible(false);
+//                    vs.setVisible(true);
+//                }
+//                
+//            }catch (SQLException ex) {
+//                Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         // TODO add your handling code here:
-        String cedula = TextoCedula.getText();
-        String nombres = TextoNombre.getText();
-        String apellidos = TextoApellido.getText();
-        String usuario = TextoCedula.getText();
-        String contrasenia = TextoContraseña.getText();
-        String id = TextoId.getText();
-        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
-        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
-            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
-        } else if(cedula.length()!=10){
-            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
-        }else {
-            String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
-            try{
-                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-                ResultSet rs = stm.executeQuery(query1);
-                String idusuario;
-                while(rs.next()){
-                    int idus = rs.getInt("idUsuario");
-                    String query2 = "UPDATE Usuarios SET Nombres = ? , Apellidos = ? , Cedula = ? , Usuario = ? , Contraseña = ? , idTipo = ? WHERE idUsuario="+idus+";";
-                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
-                    ps.setString(1,nombres);
-                    ps.setString(2,apellidos);
-                    ps.setString(3,cedula);
-                    ps.setString(4,usuario);
-                    ps.setString(5,contrasenia);
-                    ps.setInt(6,tipo);
-                    ps.executeUpdate();
-                    VistaSuperadministrador vs = new VistaSuperadministrador();
-                    JOptionPane.showMessageDialog(null, "Usuario editado correctamente");
-                    this.setVisible(false);
-                    vs.setVisible(true);
-                }
-
-            }catch (SQLException ex) {
-//                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        String cedula = TextoCedula.getText();
+//        String nombres = TextoNombre.getText();
+//        String apellidos = TextoApellido.getText();
+//        String usuario = TextoCedula.getText();
+//        String contrasenia = TextoContraseña.getText();
+//        String id = TextoId.getText();
+//        int tipo = Funciones_o_Cargos.getSelectedIndex()+1;
+//        if(estaVacio(TextoApellido) || estaVacio(TextoCedula) || estaVacio(TextoContraseña) ||estaVacio(TextoNombre) || estaVacio(TextoUsuario)){
+//            JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+//        } else if(cedula.length()!=10){
+//            JOptionPane.showMessageDialog(null, "La cédula ingresada es incorrecta");
+//        }else {
+//            String query1 = "SELECT idUsuario FROM Usuarios u WHERE u.idUsuario="+id+";";
+//            try{
+//                Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+//                ResultSet rs = stm.executeQuery(query1);
+//                String idusuario;
+//                while(rs.next()){
+//                    int idus = rs.getInt("idUsuario");
+//                    String query2 = "UPDATE Usuarios SET Nombres = ? , Apellidos = ? , Cedula = ? , Usuario = ? , Contraseña = ? , idTipo = ? WHERE idUsuario="+idus+";";
+//                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+//                    ps.setString(1,nombres);
+//                    ps.setString(2,apellidos);
+//                    ps.setString(3,cedula);
+//                    ps.setString(4,usuario);
+//                    ps.setString(5,contrasenia);
+//                    ps.setInt(6,tipo);
+//                    ps.executeUpdate();
+//                    VistaSuperadministrador vs = new VistaSuperadministrador();
+//                    JOptionPane.showMessageDialog(null, "Usuario editado correctamente");
+//                    this.setVisible(false);
+//                    vs.setVisible(true);
+//                }
+//
+//            }catch (SQLException ex) {
+////                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }//GEN-LAST:event_EditarActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel modeloBusqueda = new DefaultTableModel();
-        modeloBusqueda.addColumn("idUusario");
-        modeloBusqueda.addColumn("Nombres");
-        modeloBusqueda.addColumn("Apellidos");
-        modeloBusqueda.addColumn("Cédula");
-        modeloBusqueda.addColumn("Usuario");
-        modeloBusqueda.addColumn("Tipo");
-        for(String[] ob: datos){
-            boolean validacion = false;
-            for(String str: ob){
-                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
-            }
-            if(validacion) modeloBusqueda.addRow(ob);
-        }
-        this.TablaUsuario1.setModel(modeloBusqueda);
+//        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+//        modeloBusqueda.addColumn("idUusario");
+//        modeloBusqueda.addColumn("Nombres");
+//        modeloBusqueda.addColumn("Apellidos");
+//        modeloBusqueda.addColumn("Cédula");
+//        modeloBusqueda.addColumn("Usuario");
+//        modeloBusqueda.addColumn("Tipo");
+//        for(String[] ob: datos){
+//            boolean validacion = false;
+//            for(String str: ob){
+//                if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())) validacion = true;
+//            }
+//            if(validacion) modeloBusqueda.addRow(ob);
+//        }
+//        this.TablaUsuario1.setModel(modeloBusqueda);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.hide();
-        IniciarSesion s=IniciarSesion.getInstancia();
-        this.setVisible(false);
-        s.setVisible(true);
+//        this.hide();
+//        IniciarSesion s=IniciarSesion.getInstancia();
+//        this.setVisible(false);
+//        s.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
@@ -1063,7 +1063,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     public static javax.swing.JTextField TextoUsuario1;
     public static javax.swing.JButton botonBuscar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton2;
     public static javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

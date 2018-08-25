@@ -8,7 +8,7 @@ package Main;
 import Conexion.Conexion;
 import Vistas.IniciarSesion;
 
-/**
+/** 
  *
  * @author Yoselin
  */
@@ -18,7 +18,7 @@ public class Sistema {
     private static IniciarSesion login;
     
     public static void main(String args[]) {
-
+ 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new IniciarSesion().setVisible(true);
