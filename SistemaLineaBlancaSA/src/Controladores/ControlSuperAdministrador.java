@@ -35,6 +35,10 @@ public class ControlSuperAdministrador implements Controlador {
     private LinkedList<String[]> datos = new LinkedList();
     private DefaultTableModel modeloDefault1 = new DefaultTableModel();
     private LinkedList<String[]> datos1 = new LinkedList();
+     private DefaultTableModel modeloDefault2 = new DefaultTableModel();
+    private LinkedList<String[]> datos2 = new LinkedList();
+    private DefaultTableModel modeloDefault3 = new DefaultTableModel();
+    private LinkedList<String[]> datos3 = new LinkedList();
     
     
     public ControlSuperAdministrador(SuperAdministrador SuperAdministrador)  {
@@ -47,6 +51,11 @@ public class ControlSuperAdministrador implements Controlador {
         this.ventana.botonBuscar.addActionListener(this);
         this.ventana.jButton6.addActionListener(this);
         this.ventana.BotonGuardar.addActionListener(this);
+        this.ventana.BotonGuardar1.addActionListener(this);
+        this.ventana.botonBuscar1.addActionListener(this);
+        this.ventana.Editar1.addActionListener(this);
+        this.ventana.BotonEliminar1.addActionListener(this);
+        this.ventana.botonBuscar2.addActionListener(this);
         //ventana.setVisible(true);
         
     }
@@ -228,6 +237,140 @@ public class ControlSuperAdministrador implements Controlador {
                     Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
+        }if(this.ventana.BotonGuardar1==e.getSource()){
+            if(estaVacio(this.ventana.txtNombre1) || estaVacio(this.ventana.txtPrecio1)){
+            JOptionPane.showMessageDialog(null,"Existen campos vacíos. Ingrese todos los datos");
+            }else{
+                String nombre = this.ventana.txtNombre1.getText();
+                int tipo = this.ventana.jComboBox1.getSelectedIndex()+1;
+                int marca = this.ventana.jComboBox2.getSelectedIndex()+1;
+                float precio = Float.parseFloat(this.ventana.txtPrecio1.getText());
+                String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
+                try{
+                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+                    int n = ps.executeUpdate();
+                    VistaSuperadministrador ap = new VistaSuperadministrador();
+                    if(n>0){
+                        JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
+                        ventana.setVisible(false);
+                        ap.setVisible(true);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                    }
+                }catch(SQLException ex){
+                    JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                }
+            }
+
+        }if(this.ventana.botonBuscar1==e.getSource()){
+            DefaultTableModel modeloBusqueda = new DefaultTableModel();
+            modeloBusqueda.addColumn("idProducto");
+            modeloBusqueda.addColumn("Nombre");
+            modeloBusqueda.addColumn("Tipo");
+            modeloBusqueda.addColumn("Marca");
+            modeloBusqueda.addColumn("Precio");
+            for(String[] ob: datos2){
+                boolean validacion = false;
+                for(String str: ob){
+                    if(str.toLowerCase().contains(this.ventana.jTextField7.getText().toLowerCase())) validacion = true;
+                }
+                if(validacion) modeloBusqueda.addRow(ob);
+            }
+            ventana.TablaUsuario2.setModel(modeloBusqueda);
+        }if(this.ventana.Editar1==e.getSource()){
+            String nombre = this.ventana.txtNombre.getText();
+           float precio = Float.parseFloat(this.ventana.txtPrecio.getText());
+           int id = Integer.parseInt(this.ventana.txtId.getText());
+           int tipo = this.ventana.jComboBox1.getSelectedIndex()+1;
+           int marca = this.ventana.jComboBox2.getSelectedIndex()+1;
+           if(estaVacio(this.ventana.txtNombre) || estaVacio(this.ventana.txtPrecio) || estaVacio(this.ventana.txtId)){
+               JOptionPane.showMessageDialog(null, "Existen campos vacios, por favor llenar todos los campos");
+           }else {
+               String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
+               try{
+                   Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+                   ResultSet rs = stm.executeQuery(query1);
+                   String idusuario;
+                   while(rs.next()){
+                       int idart = rs.getInt("idArticulo");
+                       String query2 = "UPDATE Articulos SET NombreModelo = ? , idTipoArticulo = ? , idMarca = ? , Precio = ? WHERE idArticulo="+idart+";";
+                       PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                       ps.setString(1,nombre);
+                       ps.setInt(2,tipo);
+                       ps.setInt(3,marca);
+                       ps.setFloat(4,precio);
+                       int n = ps.executeUpdate();
+                       if(n > 0){
+                           VistaSuperadministrador vs = new VistaSuperadministrador();
+                           JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+                           ventana.setVisible(false);
+                           vs.setVisible(true);
+                       }
+                       else{
+                           JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
+                       }
+                   }
+
+               }catch (SQLException ex) {
+                   Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
+               }
+            }
+        }if(this.ventana.BotonEliminar1==e.getSource()){
+            int id = Integer.parseInt(ventana.txtId.getText());
+            if(estaVacio(ventana.txtId)){
+                JOptionPane.showMessageDialog(null, "No ha ingresado el id. Introduzca el dato");
+            }
+            else{
+                String query1 = "SELECT idArticulo FROM Articulos a WHERE a.idArticulo="+id+";";
+                try{
+                    Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+                    ResultSet rs = stm.executeQuery(query1);
+                    String idusuario;
+                    while(rs.next()){
+                        int idart = rs.getInt("idArticulo");
+                        String query2 = "UPDATE Articulos SET eliminado = true WHERE idArticulo="+idart+";";
+                        PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                        int n = ps.executeUpdate();
+                        if(n > 0){
+                            //VistaAdministrador vs = new VistaAdministrador();
+                          //actualizarTabla();
+                          modeloDefault2.setRowCount(0);  
+                          modeloDefault2.setColumnCount(0);
+                          modeloDefault3.setRowCount(0);
+                          modeloDefault3.setColumnCount(0);
+                          datos2.clear();
+                          datos3.clear();
+                          actualizarTablaUsuario2();
+                          actualizarTablaUsuario3();                        
+                            JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+                            //ventana.setVisible(false);
+                            //vs.setVisible(true);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Ocurrió un error, vuelva a intentarlo");
+                        }
+                    }
+
+                }catch (SQLException ex) {
+                    Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }if(this.ventana.botonBuscar2==e.getSource()){
+            DefaultTableModel modeloBusqueda = new DefaultTableModel();
+            modeloBusqueda.addColumn("idProducto");
+            modeloBusqueda.addColumn("Nombre");
+            modeloBusqueda.addColumn("Tipo");
+            modeloBusqueda.addColumn("Marca");
+            modeloBusqueda.addColumn("Precio");
+            for(String[] ob: datos2){
+                boolean validacion = false;
+                for(String str: ob){
+                    if(str.toLowerCase().contains(ventana.jTextField8.getText().toLowerCase())) validacion = true;
+                }
+                if(validacion) modeloBusqueda.addRow(ob);
+            }
+            ventana.TablaUsuario3.setModel(modeloBusqueda);
         }
         
         
@@ -318,10 +461,90 @@ public class ControlSuperAdministrador implements Controlador {
         }
     }
     
+    public void actualizarTablaUsuario2(){
+        modeloDefault2.addColumn("idProducto");
+        modeloDefault2.addColumn("Nombre");
+        modeloDefault2.addColumn("Tipo");
+        modeloDefault2.addColumn("Marca");
+        modeloDefault2.addColumn("Precio");
+        try {
+            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
+            while (rs.next()) {
+                int tipo;
+                int marca;
+                String[] dato = new String[5];
+                dato[0] = rs.getString("idArticulo");
+                dato[1] = rs.getString("NombreModelo");
+                dato[4] = String.valueOf(rs.getFloat("Precio"));
+                tipo = rs.getInt("idTipoArticulo");
+                marca = rs.getInt("idMarca");
+                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
+                while(rs1.next()){
+                    String nombre = rs1.getString("Nombre");
+                    dato[2] = nombre;
+                }
+                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
+                while(rs2.next()){
+                    String nombre = rs2.getString("Nombre");
+                    dato[3] = nombre;
+                }
+                datos2.add(dato);
+                modeloDefault2.addRow(dato);
+            }
+            this.ventana.TablaUsuario2.setModel(modeloDefault2);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void actualizarTablaUsuario3(){
+        modeloDefault3.addColumn("idProducto");
+        modeloDefault3.addColumn("Nombre");
+        modeloDefault3.addColumn("Tipo");
+        modeloDefault3.addColumn("Marca");
+        modeloDefault3.addColumn("Precio");
+        try {
+            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos WHERE eliminado = false");
+            while (rs.next()) {
+                int tipo;
+                int marca;
+                String[] dato = new String[5];
+                dato[0] = rs.getString("idArticulo");
+                dato[1] = rs.getString("NombreModelo");
+                dato[4] = String.valueOf(rs.getFloat("Precio"));
+                tipo = rs.getInt("idTipoArticulo");
+                marca = rs.getInt("idMarca");
+                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
+                while(rs1.next()){
+                    String nombre = rs1.getString("Nombre");
+                    dato[2] = nombre;
+                }
+                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
+                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
+                while(rs2.next()){
+                    String nombre = rs2.getString("Nombre");
+                    dato[3] = nombre;
+                }
+                datos3.add(dato);
+                modeloDefault3.addRow(dato);
+                
+            }
+            this.ventana.TablaUsuario3.setModel(modeloDefault3);
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaSuperadministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     void initelements(){ 
         //actualizarTablaUsuario();
         actualizarTablaUsuario1();
+        actualizarTablaUsuario2();
+        actualizarTablaUsuario3();
 //        modeloDefault.addColumn("idUsuario");
 //        modeloDefault.addColumn("Nombres");
 //        modeloDefault.addColumn("Apellidos");
