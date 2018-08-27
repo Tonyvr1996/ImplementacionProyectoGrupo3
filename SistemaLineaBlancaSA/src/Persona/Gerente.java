@@ -5,7 +5,8 @@
  */
 package Persona;
 
-import Articulo.ArticuloFactory;
+
+import Articulo.Articulo;
 import Constantes.ConstantesTipoPersonal;
 import Controladores.ControlGerente;
 
@@ -52,7 +53,7 @@ public class Gerente extends Persona{
     /**
      * @param Articulo
      */
-    public void generarReporteArticulo(ArticuloFactory Articulo) {
+    public static void generar() {
         // TODO implement here
     }
 

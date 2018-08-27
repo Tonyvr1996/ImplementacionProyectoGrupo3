@@ -6,7 +6,7 @@
 package Controladores;
 
 import Persona.SuperAdministrador;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 
 import Vistas.VistaSuperadministrador;
 import java.awt.event.ActionEvent;

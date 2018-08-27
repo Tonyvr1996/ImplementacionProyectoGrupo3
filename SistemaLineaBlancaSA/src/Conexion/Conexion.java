@@ -34,6 +34,21 @@ public class Conexion {
         System.out.println("Conexión exitosa");
     }
     
+    public boolean conectar(){
+        try {
+           c = DriverManager
+              .getConnection("jdbc:postgresql://127.0.0.1:5432/proyectods",
+              "postgres", "12345678");
+           stm = c.createStatement();
+           c.setAutoCommit(false);
+        } catch (Exception e) {
+           e.printStackTrace();
+           System.err.println(e.getClass().getName()+": "+e.getMessage());
+           System.exit(0);
+        }
+        return true;
+    }
+    
     public Statement getStm() {
         return stm;
     }

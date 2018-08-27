@@ -9,10 +9,12 @@ package Articulo;
  *
  * @author san_t
  */
-public class Refrigerador extends ArticuloFactory {
-    
-    public Refrigerador(String tipo, String modelo, String marca, boolean disponible) {
-        super(tipo, modelo, marca, disponible);
+public class Refrigerador extends Articulo {
+
+    public Refrigerador(String id, String nombre, String tipo, String marca, double precio, boolean disponible) {
+        super(id, nombre, tipo, marca, precio, disponible);
     }
+    
+    
     
 }

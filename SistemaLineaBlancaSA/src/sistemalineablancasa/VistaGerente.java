@@ -20,7 +20,7 @@ import Conexion.Conexion;
 //import Vistas.ConsultarUsuario;
 //import static Vistas.ConsultarUsuario.TablaUsuario;
 //import Vistas.CrearUsuario;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

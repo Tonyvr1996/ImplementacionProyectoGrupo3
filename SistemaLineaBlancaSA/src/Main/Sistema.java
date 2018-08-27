@@ -6,7 +6,7 @@
 package Main;
 
 import Conexion.Conexion;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 
 /** 
  *

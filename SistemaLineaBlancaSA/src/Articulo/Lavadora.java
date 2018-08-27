@@ -9,10 +9,12 @@ package Articulo;
  *
  * @author san_t
  */
-public class Lavadora extends ArticuloFactory{
+public class Lavadora extends Articulo{
     
-    public Lavadora(String tipo, String modelo, String marca, boolean disponible) {
-        super(tipo, modelo, marca, disponible);
+    
+
+    public Lavadora(String id, String nombre, String tipo, String marca, double precio, boolean disponible) {
+        super(id, nombre, tipo, marca, precio, disponible);
     }
     
 }

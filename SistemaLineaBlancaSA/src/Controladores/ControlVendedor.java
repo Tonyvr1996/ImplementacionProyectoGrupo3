@@ -6,7 +6,7 @@
 package Controladores;
 
 import Persona.Vendedor;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 import Vistas.VistaVendedor;
 import java.awt.event.ActionEvent;
 import java.sql.PreparedStatement;

@@ -20,7 +20,10 @@ public class Vendedor extends Persona{
     public Vendedor() {
     }
 
-
+    public static void Facturar(String c,int descuento,int tipo){
+        
+    }
+    
     public Vendedor(String identificacion, String nombres, String apellidos, String usuario,String contraseña) {
         super(identificacion, nombres, apellidos);
         this.usuario=usuario;

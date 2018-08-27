@@ -6,7 +6,7 @@
 package Controladores;
 
 import Persona.Administrador;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 import Vistas.VistaAdministrador;
 import static Vistas.VistaAdministrador.TablaUsuario;
 import static Vistas.VistaAdministrador.TablaUsuario1;
@@ -223,86 +223,73 @@ public class ControlAdministrador implements Controlador{
         return false;
     }
     
+    public boolean buscarArticulo(){
+        DefaultTableModel modeloBusqueda = new DefaultTableModel();
+            modeloBusqueda.addColumn("idProducto");
+            modeloBusqueda.addColumn("Nombre");
+            modeloBusqueda.addColumn("Tipo");
+            modeloBusqueda.addColumn("Marca");
+            modeloBusqueda.addColumn("Precio");
+            for(String[] ob: datos){
+                boolean validacion = false;
+                for(String str: ob){
+                    if(str.toLowerCase().contains(jTextField5.getText().toLowerCase())){ 
+                        
+                        return true;
+                    }
+                    
+                }
+                if(validacion) modeloBusqueda.addRow(ob);
+            }
+            ventana.TablaUsuario.setModel(modeloBusqueda);
+            return false;
+            
+    }  
+    
+      
     void initelements(){ 
         actualizarTablaDos();
         actualizarTabla();
-        
-//        modeloDefault.addColumn("idProducto");
-//        modeloDefault.addColumn("Nombre");
-//        modeloDefault.addColumn("Tipo");
-//        modeloDefault.addColumn("Marca");
-//        modeloDefault.addColumn("Precio");
-//        try {
-//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos a WHERE eliminado = false");
-//            while (rs.next()) {
-//                int tipo;
-//                int marca;
-//                String[] dato = new String[5];
-//                dato[0] = rs.getString("idArticulo");
-//                dato[1] = rs.getString("NombreModelo");
-//                dato[4] = String.valueOf(rs.getFloat("Precio"));
-//                tipo = rs.getInt("idTipoArticulo");
-//                marca = rs.getInt("idMarca");
-//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
-//                while(rs1.next()){
-//                    String nombre = rs1.getString("Nombre");
-//                    dato[2] = nombre;
-//                }
-//                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
-//                while(rs2.next()){
-//                    String nombre = rs2.getString("Nombre");
-//                    dato[3] = nombre;
-//                }
-//                datos.add(dato);
-//                modeloDefault.addRow(dato);
-//            }
-//            TablaUsuario.setModel(modeloDefault);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-//        modeloDefault1.addColumn("idProducto");
-//        modeloDefault1.addColumn("Nombre");
-//        modeloDefault1.addColumn("Tipo");
-//        modeloDefault1.addColumn("Marca");
-//        modeloDefault1.addColumn("Precio");
-//        try {
-//            Statement stm = IniciarSesion.getConection().getConnection().createStatement();
-//            ResultSet rs = stm.executeQuery("SELECT * FROM Articulos WHERE eliminado = false");
-//            while (rs.next()) {
-//                int tipo;
-//                int marca;
-//                String[] dato = new String[5];
-//                dato[0] = rs.getString("idArticulo");
-//                dato[1] = rs.getString("NombreModelo");
-//                dato[4] = String.valueOf(rs.getFloat("Precio"));
-//                tipo = rs.getInt("idTipoArticulo");
-//                marca = rs.getInt("idMarca");
-//                Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs1 = stm1.executeQuery("SELECT nombre FROM TipoArticulo u WHERE u.idTipoArt="+tipo+";");
-//                while(rs1.next()){
-//                    String nombre = rs1.getString("Nombre");
-//                    dato[2] = nombre;
-//                }
-//                Statement stm2 = IniciarSesion.getConection().getConnection().createStatement();
-//                ResultSet rs2 = stm2.executeQuery("SELECT nombre FROM Marcas u WHERE u.idMarca="+marca+";");
-//                while(rs2.next()){
-//                    String nombre = rs2.getString("Nombre");
-//                    dato[3] = nombre;
-//                }
-//                datos1.add(dato);
-//                modeloDefault1.addRow(dato);
-//            }
-//            TablaUsuario1.setModel(modeloDefault1);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VistaAdministrador.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+      
     }
     
-
+    public boolean guardarArtículo(){
+        if(estaVacio(txtNombre1) || estaVacio(txtPrecio1)){
+            }else{
+                String nombre = txtNombre1.getText();
+                int tipo = jComboBox1.getSelectedIndex()+1;
+                int marca = jComboBox2.getSelectedIndex()+1;
+                float precio = Float.parseFloat(txtPrecio1.getText());
+                String query = "INSERT INTO Articulos(Nombremodelo,idTipoArticulo,idMarca,Precio) VALUES ('"+nombre+"',"+tipo+","+marca+","+precio+");";
+                try{
+                    PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+                    int n = ps.executeUpdate();
+                    VistaAdministrador ap = new VistaAdministrador();
+                    if(n>0){
+                        JOptionPane.showMessageDialog(null,"Producto ingresado correctamente");
+                        ventana.setVisible(false);
+                        ap.setVisible(true);
+                        return true;
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                        return false;
+                    }
+                }catch(SQLException ex){
+                    JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                }
+            }
+        return false;
+        
+    }
+    
+    public int estaLlena(){
+        if(datos.isEmpty()){
+            return 0;
+        }else{
+            return datos.size();
+        }
+    }
     
     public void actualizarTabla(){
         modeloDefault.addColumn("idProducto");

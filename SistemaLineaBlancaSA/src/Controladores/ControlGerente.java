@@ -6,7 +6,7 @@
 package Controladores;
 
 import Persona.Gerente;
-import Vistas.IniciarSesion;
+import Vistas.singleton.IniciarSesion;
 import Vistas.VistaGerente;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;

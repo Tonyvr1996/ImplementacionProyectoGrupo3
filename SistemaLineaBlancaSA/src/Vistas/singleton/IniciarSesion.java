@@ -1,5 +1,5 @@
 
-package Vistas;
+package Vistas.singleton;
 
 import Conexion.Conexion;
 import Persona.Administrador;
@@ -27,7 +27,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     public static Conexion conection;
     public Statement stm;
     
-    public IniciarSesion() {
+    private IniciarSesion() {
         this.conection = new Conexion();
         this.stm = conection.getStm();
         initComponents();
@@ -54,11 +54,37 @@ public class IniciarSesion extends javax.swing.JFrame {
     }
     
     @Override
-    public Object clone() throws CloneNotSupportedException{
-        throw new CloneNotSupportedException();
+    public Object clone(){
+        return IniciarSesion.getInstancia();
     }
     
+     public int tipoUsuarioExiste(String usuario,String contraseña){
+        Persona A=null;
+        String query = "SELECT * FROM Usuarios u where u.usuario='"+usuario+"' AND u.contraseña='"+contraseña+"' AND eliminado = false;";
+        int tipo=0;
+        try {
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()){
+                //System.out.println(rs.getString(1));
+                tipo = rs.getInt("idtipo");
 
+        if(tipo == 1){
+            return tipo;
+        }else if(tipo ==2){
+            return tipo;
+        }else if(tipo == 3){
+            return tipo;
+        }else if(tipo == 4){
+            return tipo;
+        }else{
+            return tipo;
+        }}
+        }catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return tipo;
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -283,6 +309,32 @@ public class IniciarSesion extends javax.swing.JFrame {
         return jLabel3;
     }
 
+    public Persona buscarPersona(String usuario,String contraseña ){       
+        Persona A=null;
+        String query = "SELECT * FROM Usuarios u where u.usuario='"+usuario+"' AND u.contraseña='"+contraseña+"' AND eliminado = false;";
+        int tipo=0;
+        try {
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()){
+                //System.out.println(rs.getString(1));
+                tipo = rs.getInt("idtipo");        
+        if(tipo == 1){
+             A=new SuperAdministrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+        }else if(tipo ==2){
+             A = new Administrador(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+        }else if(tipo == 3){
+             A = new Gerente(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+        }else if(tipo == 4){
+             A = new Vendedor(rs.getString("Cedula"),rs.getString("Nombres"),rs.getString("Apellidos"),rs.getString("Usuario"),rs.getString("Contraseña"));
+        }else{
+            return A;
+        }}
+        }catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return A;
+    }
+    
     public void setjLabel3(JLabel jLabel3) {
         this.jLabel3 = jLabel3;
     }
@@ -307,6 +359,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         return jLabel6;
     }
 
+    public void borrarCampos(){
+        txtUsuario.setText("");
+        txtPasword.setText("");
+    }
+    
     public void setjLabel6(JLabel jLabel6) {
         this.jLabel6 = jLabel6;
     }
