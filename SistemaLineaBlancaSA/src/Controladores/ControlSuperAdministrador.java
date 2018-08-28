@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import static Vistas.VistaSuperadministrador.TablaUsuario;
 import static Vistas.VistaSuperadministrador.TablaUsuario1;
+import java.util.Date;
 
 /**
  *
@@ -56,6 +57,8 @@ public class ControlSuperAdministrador implements Controlador {
         this.ventana.Editar1.addActionListener(this);
         this.ventana.BotonEliminar1.addActionListener(this);
         this.ventana.botonBuscar2.addActionListener(this);
+        this.ventana.AgregarProducto.addActionListener(this);
+        this.ventana.EliminarProducto.addActionListener(this);
         //ventana.setVisible(true);
         
     }
@@ -372,8 +375,108 @@ public class ControlSuperAdministrador implements Controlador {
             }
             ventana.TablaUsuario3.setModel(modeloBusqueda);
         }
-        
-        
+        if(this.ventana.AgregarProducto==e.getSource()){
+            if(estaVacio(this.ventana.jTextField1) || estaVacio(this.ventana.jTextField3) || estaVacio(this.ventana.jTextField4)){
+            JOptionPane.showMessageDialog(null,"Existen campos vacíos. Ingrese todos los datos");
+            }else{
+                VistaSuperadministrador ap = new VistaSuperadministrador();
+                int idVenta = 0;
+                String nombre = this.ventana.jTextField1.getText() + " " + this.ventana.jTextField2.getText();
+                String identificacion = this.ventana.jTextField3.getText();
+                String direccion = this.ventana.jTextField4.getText();
+                int cantidad = this.ventana.jComboBox9.getSelectedIndex() + 1;
+                int idCliente = 0;
+                int articulo = this.ventana.jComboBox8.getSelectedIndex() + 1;
+                int tipoPago = this.ventana.jComboBox5.getSelectedIndex() + 1;
+                int tipoCliente = this.ventana.jComboBox7.getSelectedIndex() + 1; 
+                System.out.println(tipoCliente);
+                if(tipoCliente == 1){
+                    String query1 = "SELECT * FROM ClientePersona cp WHERE cp.idClientePersona='"+identificacion+"';";
+                    try{
+                        Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                        ResultSet rs1 = stm1.executeQuery(query1);
+                        System.out.println(tipoCliente);
+                        while(rs1.next()){
+                            idCliente = rs1.getInt("idCliente");
+                            System.out.println(idCliente);
+                        }
+                    }catch (SQLException ex) {
+                    Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else{
+                    String query1 = "SELECT * FROM ClienteEmpresa ce WHERE ce.idClienteEmpresa='"+identificacion+"';";
+                    try{
+                        Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                        ResultSet rs1 = stm1.executeQuery(query1);
+                        while(rs1.next()){
+                            idCliente = rs1.getInt("idCliente");
+                        }
+                    }catch (SQLException ex) {
+                    Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(idCliente == 0){
+                    JOptionPane.showMessageDialog(null, "El cliente que ha ingresado no existe"); 
+                }
+                else{
+                    Date fecha = new Date();
+                    int dia = fecha.getDay();
+                    int mes = fecha.getMonth();
+                    int anio = fecha.getYear();
+                   String query = "INSERT INTO Ventas(idCliente,idTipoPago,fecha) VALUES ("+idCliente+",'"+tipoPago+","+anio+"-"+mes+"-"+dia+"');";
+                    try{
+                        PreparedStatement ps = IniciarSesion.getConection().getConnection().prepareStatement(query);
+                        int n = ps.executeUpdate();
+                    }catch (SQLException ex) {
+                    Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    String query4 = "SELECT * FROM Ventas v WHERE v.idCliente="+idCliente+" AND idTipoPago="+tipoPago+" AND fecha='"+anio+"-"+mes+"-"+dia+"';";
+                    try{
+                        Statement stm1 = IniciarSesion.getConection().getConnection().createStatement();
+                        ResultSet rs1 = stm1.executeQuery(query4);
+                        while(rs1.next()){
+                            idVenta = rs1.getInt("idVenta");
+                        }
+                    }catch (SQLException ex) {
+                        Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    float precio = 0;
+                    String query3 = "SELECT * FROM Articulos a WHERE a.idArticulo="+articulo+";";
+                    try{
+                        Statement stm4 = IniciarSesion.getConection().getConnection().createStatement();
+                        ResultSet rs4 = stm4.executeQuery(query3);
+                        while(rs4.next()){
+                            precio = rs4.getFloat("precio");
+                        }
+                    }catch (SQLException ex) {
+                        Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    String query2 = "INSERT INTO DescripcionVenta(idVenta,idArticulo,Cantidad,Total) VALUES ("+idVenta+","+articulo+","+cantidad+","+cantidad*precio+");";
+                    try{
+                        PreparedStatement ps3 = IniciarSesion.getConection().getConnection().prepareStatement(query2);
+                        int m = ps3.executeUpdate();
+                        if(m>0){
+                            JOptionPane.showMessageDialog(null,"Venta ingresada correctamente");
+                        }
+                        Date date = new Date();
+                        String q = "INSERT INTO LogVenta(idVenta,fecha,hora) VALUES("+idVenta+",'"+date.getYear()+"-"+date.getMonth()+"-"+date.getDay()+"','"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"');";
+                        try{
+                            PreparedStatement ps5 = IniciarSesion.getConection().getConnection().prepareStatement(q);
+                            ps5.executeUpdate();
+                        }catch(SQLException ex){
+                            JOptionPane.showMessageDialog(null,"Ocurrió un error, ingrese nuevamente los datos");
+                        }
+                   }catch (SQLException ex) {
+                        Logger.getLogger(ControlSuperAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                            
+                    ventana.setVisible(false);
+                    ap.setVisible(true); 
+                }
+            }
+        }
     }
     
     

@@ -184,17 +184,17 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jLabel42 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
         jComboBox8 = new javax.swing.JComboBox<>();
         AgregarProducto = new javax.swing.JButton();
         EliminarProducto = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
         jComboBox9 = new javax.swing.JComboBox<>();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -1322,7 +1322,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
         jLabel37.setText("Apellidos:");
 
-        jLabel38.setText("Cédula:");
+        jLabel38.setText("Identificación:");
 
         jLabel39.setText("Dirección:");
 
@@ -1334,23 +1334,12 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
 
         jLabel40.setText("Nombre producto:");
 
-        jLabel41.setText("Tipo Producto:");
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Línea Blanca" }));
-
-        jLabel42.setText("Id Producto:");
-
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocina de induccion 1", "Cocina de induccion 2", "Refrigeradora 1", "Refrigeradora 2", "Lavadora 1", "Lavadora 2", "Lavadora 3" }));
+        jComboBox8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                jComboBox8ActionPerformed(evt);
             }
         });
-
-        jLabel43.setText("Marca:");
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Indurama", "Durex", "Mabe" }));
-
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lavadora 1", "Lavadora 2", "Cocina 1", "Cocina 2", "Refrigeradora 1", "Refirgeradora 1" }));
 
         AgregarProducto.setText("Agregar producto a la venta");
 
@@ -1359,6 +1348,25 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         jLabel44.setText("Cantidad:");
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
+        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox9ActionPerformed(evt);
+            }
+        });
+
+        jLabel42.setText("Vendedor:");
+
+        jLabel45.setText("Id Usuario:");
+
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+
+        jLabel46.setText("Tipo:");
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Persona", "Empresa" }));
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1383,7 +1391,16 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addComponent(jLabel38)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel42)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel45)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel23Layout.createSequentialGroup()
@@ -1395,15 +1412,10 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
                             .addGroup(jPanel23Layout.createSequentialGroup()
                                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel40)
-                                    .addComponent(jLabel41)
-                                    .addComponent(jLabel42)
                                     .addComponent(jLabel43)
                                     .addComponent(jLabel44))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel23Layout.createSequentialGroup()
@@ -1419,7 +1431,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
                                 .addComponent(FacturarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel33)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1443,35 +1455,42 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel39)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel44)
+                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel37)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel42)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel38)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel43)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel44)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AgregarProducto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EliminarProducto)
-                        .addGap(423, 423, 423))
+                            .addComponent(jLabel43))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(AgregarProducto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EliminarProducto)
+                                .addGap(423, 423, 423))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel46)
+                                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel45)
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
 
         jTabbedPane1.addTab("Venta/Proforma", jPanel23);
@@ -1676,6 +1695,14 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jComboBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox8ActionPerformed
+
+    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox9ActionPerformed
+
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
@@ -1720,7 +1747,7 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgregarProducto;
+    public static javax.swing.JButton AgregarProducto;
     public static javax.swing.JRadioButton BotonCategoria;
     public static javax.swing.JRadioButton BotonDescripcion;
     public static javax.swing.JButton BotonEliminar;
@@ -1732,8 +1759,8 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     public static javax.swing.JRadioButton BotonTipo1;
     public static javax.swing.JButton Editar;
     public static javax.swing.JButton Editar1;
-    private javax.swing.JButton EliminarProducto;
-    private javax.swing.JButton FacturarBut;
+    public static javax.swing.JButton EliminarProducto;
+    public static javax.swing.JButton FacturarBut;
     public static javax.swing.JComboBox<String> Funciones_o_Cargos;
     public static javax.swing.JComboBox<String> Funciones_o_Cargos1;
     public static javax.swing.JRadioButton RadioBotonApellido;
@@ -1773,11 +1800,10 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> jComboBox2;
     public static javax.swing.JComboBox<String> jComboBox3;
     public static javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
+    public static javax.swing.JComboBox<String> jComboBox5;
+    public static javax.swing.JComboBox<String> jComboBox7;
+    public static javax.swing.JComboBox<String> jComboBox8;
+    public static javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1813,10 +1839,11 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1852,16 +1879,16 @@ public class VistaSuperadministrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public static javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField jTextField3;
+    public static javax.swing.JTextField jTextField4;
     public static javax.swing.JTextField jTextField5;
     public static javax.swing.JTextField jTextField6;
     public static javax.swing.JTextField jTextField7;
     public static javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
+    public static javax.swing.JTextField jTextField9;
+    public static javax.swing.JTextPane jTextPane1;
     public static javax.swing.JTextField txtId;
     public static javax.swing.JTextField txtNombre;
     public static javax.swing.JTextField txtNombre1;

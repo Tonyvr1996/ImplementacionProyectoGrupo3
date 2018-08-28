@@ -1870,6 +1870,17 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextField3" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField9" min="-2" pref="81" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBox7" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1883,16 +1894,11 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel40" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBox7" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                          <Component id="jTextField9" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                                          <Component id="jComboBox6" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                                           <Component id="jComboBox8" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                                           <Component id="jComboBox9" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                                       </Group>
@@ -1917,7 +1923,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                      <EmptySpace pref="118" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1945,33 +1951,44 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                      <Component id="AgregarProducto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="EliminarProducto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="AgregarProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="EliminarProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -1999,6 +2016,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cod.   Articulo&#x9;Cant.   Precio"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -2021,6 +2041,7 @@
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel34">
@@ -2037,6 +2058,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Facturar"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel36">
               <Properties>
@@ -2050,7 +2074,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel38">
               <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
+                <Property name="text" type="java.lang.String" value="Identificaci&#xf3;n:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel39">
@@ -2062,90 +2086,69 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField2">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField3">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField4">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel40">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre producto:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel41">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo Producto:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox6">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="L&#xed;nea Blanca"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel42">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Id Producto:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField9">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField9ActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel43">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Marca:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox7">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Indurama"/>
-                    <StringItem index="1" value="Durex"/>
-                    <StringItem index="2" value="Mabe"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox8">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="Lavadora 1"/>
-                    <StringItem index="1" value="Lavadora 2"/>
-                    <StringItem index="2" value="Cocina 1"/>
-                    <StringItem index="3" value="Cocina 2"/>
-                    <StringItem index="4" value="Refrigeradora 1"/>
-                    <StringItem index="5" value="Refirgeradora 1"/>
+                  <StringArray count="7">
+                    <StringItem index="0" value="Cocina de induccion 1"/>
+                    <StringItem index="1" value="Cocina de induccion 2"/>
+                    <StringItem index="2" value="Refrigeradora 1"/>
+                    <StringItem index="3" value="Refrigeradora 2"/>
+                    <StringItem index="4" value="Lavadora 1"/>
+                    <StringItem index="5" value="Lavadora 2"/>
+                    <StringItem index="6" value="Lavadora 3"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox8ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="AgregarProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar producto a la venta"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="EliminarProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar producto de la venta"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel44">
               <Properties>
@@ -2165,8 +2168,49 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox9ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel42">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vendedor:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel45">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Id Usuario:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField9">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField9ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel46">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox7">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Persona"/>
+                    <StringItem index="1" value="Empresa"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
           </SubComponents>
